@@ -6,12 +6,12 @@ import kotlin.uuid.Uuid
 @OptIn(ExperimentalUuidApi::class)
 data class Exercise(
     val id: Uuid = Uuid.random(),
-    val title: String,
     val titleRu: String,
     val titleEn: String,
     val unitType: UnitType,
     val muscleGroups: List<MuscleGroup>,
     val equipment: List<Equipment>,
     val iconName: String,
-    val imageName: String
+    val imageName: String,
+    val canEdit: Boolean
 )
