@@ -6,35 +6,28 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7654E5592F019E77003E0465 /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5562F019E77003E0465 /* iOSApp.swift */; };
+		7654E55A2F019E77003E0465 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7654E5512F019E77003E0465 /* Preview Assets.xcassets */; };
+		7654E55B2F019E77003E0465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7654E5532F019E77003E0465 /* Assets.xcassets */; };
+		7654E55F2F019EC3003E0465 /* TabBarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E55E2F019EC3003E0465 /* TabBarScreen.swift */; };
+		7654E5652F01A004003E0465 /* WorkoutsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5642F01A004003E0465 /* WorkoutsScreen.swift */; };
+		7654E5672F01A022003E0465 /* ExercisesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5662F01A022003E0465 /* ExercisesScreen.swift */; };
+		7654E5692F01A02B003E0465 /* InfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5682F01A02B003E0465 /* InfoScreen.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		2557CB70B6D507C6FD59886D /* SportAppKMP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportAppKMP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7654E54F2F019E74003E0465 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		7654E5512F019E77003E0465 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7654E5532F019E77003E0465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7654E5552F019E77003E0465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7654E5562F019E77003E0465 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		7654E55E2F019EC3003E0465 /* TabBarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarScreen.swift; sourceTree = "<group>"; };
+		7654E5642F01A004003E0465 /* WorkoutsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsScreen.swift; sourceTree = "<group>"; };
+		7654E5662F01A022003E0465 /* ExercisesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesScreen.swift; sourceTree = "<group>"; };
+		7654E5682F01A02B003E0465 /* InfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		50AA1CDA10C67C544B5E3CE1 /* Exceptions for "iosApp" folder in "iosApp" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 68C74510121B1C74E5C1C3AC /* iosApp */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		97659AD926932612A00EFD04 /* iosApp */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				50AA1CDA10C67C544B5E3CE1 /* Exceptions for "iosApp" folder in "iosApp" target */,
-			);
-			path = iosApp;
-			sourceTree = "<group>";
-		};
-		0417EE4C33BFBE2F4D3A1347 /* Configuration */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FE60B521A7DF357028023058 /* Frameworks */ = {
@@ -47,13 +40,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EBC945436ACFF518C9B2FBF4 = {
+		7654E5502F019E74003E0465 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				0417EE4C33BFBE2F4D3A1347 /* Configuration */,
-				97659AD926932612A00EFD04 /* iosApp */,
-				BD608C87FDF7E64F1B4BBEE2 /* Products */,
+				7654E54F2F019E74003E0465 /* Config.xcconfig */,
 			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		7654E5522F019E77003E0465 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7654E5512F019E77003E0465 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7654E5572F019E77003E0465 /* iosApp */ = {
+			isa = PBXGroup;
+			children = (
+				7654E5562F019E77003E0465 /* iOSApp.swift */,
+				7654E5602F019F2E003E0465 /* Presentation */,
+				7654E55D2F019E89003E0465 /* App */,
+				7654E5522F019E77003E0465 /* Preview Content */,
+			);
+			path = iosApp;
+			sourceTree = "<group>";
+		};
+		7654E55D2F019E89003E0465 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7654E5532F019E77003E0465 /* Assets.xcassets */,
+				7654E5552F019E77003E0465 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7654E5602F019F2E003E0465 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				7654E55E2F019EC3003E0465 /* TabBarScreen.swift */,
+				7654E5612F019F3C003E0465 /* WorkoutsTab */,
+				7654E5622F019F4B003E0465 /* ExercisesTab */,
+				7654E5632F019F56003E0465 /* InfoTab */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		7654E5612F019F3C003E0465 /* WorkoutsTab */ = {
+			isa = PBXGroup;
+			children = (
+				7654E5642F01A004003E0465 /* WorkoutsScreen.swift */,
+			);
+			path = WorkoutsTab;
+			sourceTree = "<group>";
+		};
+		7654E5622F019F4B003E0465 /* ExercisesTab */ = {
+			isa = PBXGroup;
+			children = (
+				7654E5662F01A022003E0465 /* ExercisesScreen.swift */,
+			);
+			path = ExercisesTab;
+			sourceTree = "<group>";
+		};
+		7654E5632F019F56003E0465 /* InfoTab */ = {
+			isa = PBXGroup;
+			children = (
+				7654E5682F01A02B003E0465 /* InfoScreen.swift */,
+			);
+			path = InfoTab;
 			sourceTree = "<group>";
 		};
 		BD608C87FDF7E64F1B4BBEE2 /* Products */ = {
@@ -62,6 +117,15 @@
 				2557CB70B6D507C6FD59886D /* SportAppKMP.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EBC945436ACFF518C9B2FBF4 = {
+			isa = PBXGroup;
+			children = (
+				7654E5572F019E77003E0465 /* iosApp */,
+				7654E5502F019E74003E0465 /* Configuration */,
+				BD608C87FDF7E64F1B4BBEE2 /* Products */,
+			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -79,9 +143,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				97659AD926932612A00EFD04 /* iosApp */,
 			);
 			name = iosApp;
 			packageProductDependencies = (
@@ -129,6 +190,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7654E55A2F019E77003E0465 /* Preview Assets.xcassets in Resources */,
+				7654E55B2F019E77003E0465 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7654E5592F019E77003E0465 /* iOSApp.swift in Sources */,
+				7654E5652F01A004003E0465 /* WorkoutsScreen.swift in Sources */,
+				7654E55F2F019EC3003E0465 /* TabBarScreen.swift in Sources */,
+				7654E5692F01A02B003E0465 /* InfoScreen.swift in Sources */,
+				7654E5672F01A022003E0465 /* ExercisesScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,8 +237,7 @@
 /* Begin XCBuildConfiguration section */
 		89DDDF43C7F90EB2C3C0BD03 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 0417EE4C33BFBE2F4D3A1347 /* Configuration */;
-			baseConfigurationReferenceRelativePath = Config.xcconfig;
+			baseConfigurationReference = 7654E54F2F019E74003E0465 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -234,8 +301,7 @@
 		};
 		A21E99735FDDFB2B4F027DA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 0417EE4C33BFBE2F4D3A1347 /* Configuration */;
-			baseConfigurationReferenceRelativePath = Config.xcconfig;
+			baseConfigurationReference = 7654E54F2F019E74003E0465 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -302,7 +368,7 @@
 				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_FILE = iosApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -330,7 +396,7 @@
 				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_FILE = iosApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
