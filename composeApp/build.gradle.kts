@@ -17,6 +17,7 @@ kotlin {
     
     sourceSets {
         androidMain.dependencies {
+            implementation(compose.materialIconsExtended) // *** For Icons
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
         }
