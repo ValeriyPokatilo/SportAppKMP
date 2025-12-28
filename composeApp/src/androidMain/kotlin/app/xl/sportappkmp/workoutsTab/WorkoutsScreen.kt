@@ -1,4 +1,4 @@
-package app.xl.sportappkmp.presentation.infoTab
+package app.xl.sportappkmp.workoutsTab
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,13 +8,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun InfoScreen(
+fun WorkoutsScreen(
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Инфо")
+        Text(text = "Тренировки")
     }
 }

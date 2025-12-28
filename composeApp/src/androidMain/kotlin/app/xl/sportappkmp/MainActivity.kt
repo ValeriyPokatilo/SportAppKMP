@@ -1,4 +1,4 @@
-package app.xl.sportappkmp.presentation
+package app.xl.sportappkmp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

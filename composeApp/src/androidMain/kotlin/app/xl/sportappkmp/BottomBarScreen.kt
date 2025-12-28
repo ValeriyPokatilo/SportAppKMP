@@ -1,4 +1,4 @@
-package app.xl.sportappkmp.presentation
+package app.xl.sportappkmp
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -16,9 +16,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import app.xl.sportappkmp.presentation.exercisesTab.ExercisesScreen
-import app.xl.sportappkmp.presentation.infoTab.InfoScreen
-import app.xl.sportappkmp.presentation.workoutsTab.WorkoutsScreen
+import app.xl.sportappkmp.exercisesTab.ExercisesScreen
+import app.xl.sportappkmp.infoTab.InfoScreen
+import app.xl.sportappkmp.workoutsTab.WorkoutsScreen
 
 @Composable
 fun BottomBarScreen() {
