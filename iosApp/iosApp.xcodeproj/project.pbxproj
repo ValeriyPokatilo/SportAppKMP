@@ -14,6 +14,11 @@
 		7654E5652F01A004003E0465 /* WorkoutsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5642F01A004003E0465 /* WorkoutsScreen.swift */; };
 		7654E5672F01A022003E0465 /* ExercisesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5662F01A022003E0465 /* ExercisesScreen.swift */; };
 		7654E5692F01A02B003E0465 /* InfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5682F01A02B003E0465 /* InfoScreen.swift */; };
+		7654E5722F01C133003E0465 /* CFlowExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E56B2F01C133003E0465 /* CFlowExt.swift */; };
+		7654E5732F01C133003E0465 /* ViewModelStateNullable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5702F01C133003E0465 /* ViewModelStateNullable.swift */; };
+		7654E5742F01C133003E0465 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E56D2F01C133003E0465 /* ViewModelBinding.swift */; };
+		7654E5752F01C133003E0465 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E56F2F01C133003E0465 /* ViewModelState.swift */; };
+		7654E5762F01C133003E0465 /* ViewModelObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E56E2F01C133003E0465 /* ViewModelObservable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,12 @@
 		7654E5642F01A004003E0465 /* WorkoutsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsScreen.swift; sourceTree = "<group>"; };
 		7654E5662F01A022003E0465 /* ExercisesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesScreen.swift; sourceTree = "<group>"; };
 		7654E5682F01A02B003E0465 /* InfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreen.swift; sourceTree = "<group>"; };
+		7654E56B2F01C133003E0465 /* CFlowExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFlowExt.swift; sourceTree = "<group>"; };
+		7654E56C2F01C133003E0465 /* mokoMvvmFlowSwiftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mokoMvvmFlowSwiftUI.h; sourceTree = "<group>"; };
+		7654E56D2F01C133003E0465 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
+		7654E56E2F01C133003E0465 /* ViewModelObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelObservable.swift; sourceTree = "<group>"; };
+		7654E56F2F01C133003E0465 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
+		7654E5702F01C133003E0465 /* ViewModelStateNullable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelStateNullable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +94,7 @@
 				7654E5612F019F3C003E0465 /* WorkoutsTab */,
 				7654E5622F019F4B003E0465 /* ExercisesTab */,
 				7654E5632F019F56003E0465 /* InfoTab */,
+				7654E56A2F01C129003E0465 /* Utils */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -109,6 +121,27 @@
 				7654E5682F01A02B003E0465 /* InfoScreen.swift */,
 			);
 			path = InfoTab;
+			sourceTree = "<group>";
+		};
+		7654E56A2F01C129003E0465 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7654E5712F01C133003E0465 /* mokoMvvmFlowSwiftUI */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7654E5712F01C133003E0465 /* mokoMvvmFlowSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				7654E56B2F01C133003E0465 /* CFlowExt.swift */,
+				7654E56C2F01C133003E0465 /* mokoMvvmFlowSwiftUI.h */,
+				7654E56D2F01C133003E0465 /* ViewModelBinding.swift */,
+				7654E56E2F01C133003E0465 /* ViewModelObservable.swift */,
+				7654E56F2F01C133003E0465 /* ViewModelState.swift */,
+				7654E5702F01C133003E0465 /* ViewModelStateNullable.swift */,
+			);
+			path = mokoMvvmFlowSwiftUI;
 			sourceTree = "<group>";
 		};
 		BD608C87FDF7E64F1B4BBEE2 /* Products */ = {
@@ -227,6 +260,11 @@
 				7654E5592F019E77003E0465 /* iOSApp.swift in Sources */,
 				7654E5652F01A004003E0465 /* WorkoutsScreen.swift in Sources */,
 				7654E55F2F019EC3003E0465 /* TabBarScreen.swift in Sources */,
+				7654E5722F01C133003E0465 /* CFlowExt.swift in Sources */,
+				7654E5732F01C133003E0465 /* ViewModelStateNullable.swift in Sources */,
+				7654E5742F01C133003E0465 /* ViewModelBinding.swift in Sources */,
+				7654E5752F01C133003E0465 /* ViewModelState.swift in Sources */,
+				7654E5762F01C133003E0465 /* ViewModelObservable.swift in Sources */,
 				7654E5692F01A02B003E0465 /* InfoScreen.swift in Sources */,
 				7654E5672F01A022003E0465 /* ExercisesScreen.swift in Sources */,
 			);
