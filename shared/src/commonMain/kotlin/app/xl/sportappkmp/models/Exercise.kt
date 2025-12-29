@@ -5,7 +5,7 @@ import kotlin.uuid.Uuid
 
 @OptIn(ExperimentalUuidApi::class)
 data class Exercise(
-    val id: Uuid = Uuid.random(),
+    val id: String = Uuid.random().toString(),
     val titleRu: String,
     val titleEn: String,
     val unitType: UnitType,
