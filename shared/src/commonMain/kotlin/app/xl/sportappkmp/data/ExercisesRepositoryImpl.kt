@@ -5,7 +5,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
-import kotlin.collections.listOf
 
 object ExercisesRepositoryImpl: ExercisesRepository {
 
@@ -19,7 +18,8 @@ object ExercisesRepositoryImpl: ExercisesRepository {
         return exerciseStateFlow.map { currentList ->
             currentList.filter { exercise ->
                 // TODO: - use localizedTitle
-                exercise.titleRu.contains(query) || exercise.titleEn.contains(query)
+                exercise.titleRu.lowercase().contains(query.lowercase()) ||
+                        exercise.titleEn.lowercase().contains(query.lowercase())
             }
         }
     }
