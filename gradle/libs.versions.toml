@@ -14,6 +14,7 @@ junit = "4.13.2"
 kotlin = "2.3.0"
 kotlinxCoroutinesCore = "1.9.0"
 mokoMvvmCore = "0.16.1"
+mokoResourcesCore = "0.25.2"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -31,6 +32,10 @@ mokoMvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "mokoMvvm
 mokoMvvm-flow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "mokoMvvmCore" }
 mokoMvvm-flow-compose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "mokoMvvmCore" }
 mokoMvvm-flow-swiftui = { module = "dev.icerock.moko:mvvm-flow-swiftui", version.ref = "mokoMvvmCore" }
+mokoResources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResourcesCore" }
+mokoResources-resources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcesCore" }
+mokoResources-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResourcesCore" }
+mokoResources-graphics = { module = "dev.icerock.moko:graphics", version.ref = "mokoResourcesCore" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
