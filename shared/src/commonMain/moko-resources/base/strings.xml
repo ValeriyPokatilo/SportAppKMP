@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <!-- Tabs -->
+    <string name="workoutsTabTitle">Workouts</string>
+    <string name="exercisesTabTitle">Exercises</string>
+    <string name="infoTabTitle">Info</string>
+    <!-- Search bar -->
+    <string name="searchBarPlaceholder">Search ...</string>
+</resources>
