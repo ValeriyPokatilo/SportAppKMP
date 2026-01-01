@@ -24,7 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import app.xl.sportappkmp.MR
 import app.xl.sportappkmp.models.Exercise
+import app.xl.sportappkmp.utils.localizer
 import app.xl.sportappkmp.viewModels.exercisesTab.ExercisesScreenViewModel
 
 @Composable
@@ -65,6 +67,7 @@ fun SearchBar(
     query: String,
     onQueryChange: (String) -> Unit
 ) {
+    val searchPlaceholder = localizer(MR.strings.searchBarPlaceholder)
     TextField(
         modifier = modifier
             .fillMaxWidth()
@@ -77,7 +80,7 @@ fun SearchBar(
         onValueChange = onQueryChange,
         placeholder = {
             Text(
-                text = "Search ...",
+                text = searchPlaceholder,
                 fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

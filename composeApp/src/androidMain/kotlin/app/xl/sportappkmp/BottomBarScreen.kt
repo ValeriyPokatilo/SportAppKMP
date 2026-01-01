@@ -18,26 +18,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import app.xl.sportappkmp.exercisesTab.ExercisesScreen
 import app.xl.sportappkmp.infoTab.InfoScreen
+import app.xl.sportappkmp.utils.localizer
 import app.xl.sportappkmp.workoutsTab.WorkoutsScreen
 
 @Composable
 fun BottomBarScreen() {
+    val workoutsTitle = localizer(MR.strings.workoutsTabTitle)
+    val exercisesTitle = localizer(MR.strings.exercisesTabTitle)
+    val infoTitle = localizer(MR.strings.infoTabTitle)
+
     val items = rememberSaveable {
         listOf(
             BottomBarItem(
-                title = "Тренировки", // TODO: - Move to resources
+                title = workoutsTitle,
                 destination = BottomBarDestination.WORKOUTS,
                 selectedIcon = Icons.Filled.Home,  // TODO: - Move to resources
                 unselectedIcon = Icons.Outlined.Home  // TODO: - Move to resources
             ),
             BottomBarItem(
-                title = "Упражнения", // TODO: - Move to resources
+                title = exercisesTitle,
                 destination = BottomBarDestination.EXERCISES,
                 selectedIcon = Icons.Filled.Home, // TODO: - Move to resources
                 unselectedIcon = Icons.Outlined.Home // TODO: - Move to resources
             ),
             BottomBarItem(
-                title = "Инфо", // TODO: - Move to resources
+                title = infoTitle,
                 destination = BottomBarDestination.INFO,
                 selectedIcon = Icons.Filled.Home, // TODO: - Move to resources
                 unselectedIcon = Icons.Outlined.Home // TODO: - Move to resources
