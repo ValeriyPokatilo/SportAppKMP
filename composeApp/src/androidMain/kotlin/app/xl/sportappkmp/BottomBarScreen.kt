@@ -84,7 +84,9 @@ fun BottomBarScreen() {
             }
         }
     ) { innerPadding ->
-        val paddingModifier = Modifier.padding(innerPadding)
+        val paddingModifier = Modifier
+            .padding(bottom = innerPadding.calculateBottomPadding())
+            .padding(top = innerPadding.calculateTopPadding())
         when (selectedDestination) {
             BottomBarDestination.WORKOUTS -> {
                 WorkoutsScreen(modifier = paddingModifier)

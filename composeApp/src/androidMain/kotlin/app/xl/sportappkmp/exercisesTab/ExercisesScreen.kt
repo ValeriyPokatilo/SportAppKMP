@@ -1,7 +1,7 @@
 package app.xl.sportappkmp.exercisesTab
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,24 +9,18 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import app.xl.sportappkmp.MR
-import app.xl.sportappkmp.models.Exercise
-import app.xl.sportappkmp.utils.localizer
+import app.xl.sportappkmp.exercisesTab.views.ExerciseListRow
+import app.xl.sportappkmp.exercisesTab.views.SearchBar
+import app.xl.sportappkmp.utils.Localizer
 import app.xl.sportappkmp.viewModels.exercisesTab.ExercisesScreenViewModel
 
 @Composable
@@ -34,97 +28,44 @@ fun ExercisesScreen(
     modifier: Modifier = Modifier,
     viewModel: ExercisesScreenViewModel = viewModel()
 ) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsStateWithLifecycle()
 
     Column(
         modifier = modifier.fillMaxSize()
     ) {
         SearchBar(
+            modifier = Modifier.padding(horizontal = 24.dp),
             query = state.query,
             onQueryChange = { query ->
                 viewModel.onQueryChange(query = query)
             }
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
+
+        HorizontalDivider(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp),
+            thickness = 2.dp,
+            color = Color.DarkGray
+        )
+
+        val localizer = Localizer(LocalContext.current)
 
         LazyColumn(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(horizontal = 24.dp)
         ) {
             itemsIndexed(
                 items = state.exercises,
                 key = { _, exercise -> exercise.id }
             ) { index, exercise ->
-                ExerciseListRow(exercise = exercise)
+                ExerciseListRow(
+                    localizer = localizer,
+                    exercise = exercise
+                )
             }
         }
-    }
-}
-
-@Composable
-fun SearchBar(
-    modifier: Modifier = Modifier,
-    query: String,
-    onQueryChange: (String) -> Unit
-) {
-    val searchPlaceholder = localizer(MR.strings.searchBarPlaceholder)
-    TextField(
-        modifier = modifier
-            .fillMaxWidth()
-            .border(
-                width =  1.dp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                shape = RoundedCornerShape(10.dp)
-            ),
-        value = query,
-        onValueChange = onQueryChange,
-        placeholder = {
-            Text(
-                text = searchPlaceholder,
-                fontSize = 14.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = "Search notes",
-                tint = MaterialTheme.colorScheme.onSurface
-            )
-        },
-        shape = RoundedCornerShape(10.dp)
-    )
-}
-
-@Composable
-fun ExerciseListRow(
-    modifier: Modifier = Modifier,
-    exercise: Exercise
-) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-    ) {
-        Text(
-            text = exercise.titleRu, // TODO: - use localizedTitle
-            fontSize = 32.sp,
-            fontWeight = FontWeight.Bold
-        )
-
-        Text(
-            text = exercise.muscleGroups.joinToString(", "), // TODO: - use localizedTitle
-            fontSize = 24.sp
-        )
-
-        Text(
-            text = exercise.equipment.joinToString(", "), // TODO: - use localizedTitle
-            fontSize = 24.sp
-        )
-
-        Text(
-            text = exercise.unitType.toString(), // TODO: - use localizedTitle
-            fontSize = 24.sp
-        )
     }
 }
