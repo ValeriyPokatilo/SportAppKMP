@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import Shared
 
 struct WorkoutsScreen: View {
+    
     var body: some View {
         NavigationStack {
             VStack {
 
             }
-            .navigationTitle("Тренировки")
+            .navigationTitle(Localizer().get(id: MR.strings().workoutsTabTitle, args: []))
         }
     }
 }

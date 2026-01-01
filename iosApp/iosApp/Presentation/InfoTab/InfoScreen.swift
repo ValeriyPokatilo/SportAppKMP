@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shared
 
 struct InfoScreen: View {
     var body: some View {
@@ -13,7 +14,7 @@ struct InfoScreen: View {
             VStack {
 
             }
-            .navigationTitle("Инфо")
+            .navigationTitle(Localizer().get(id: MR.strings().infoTabTitle, args: []))
         }
     }
 }

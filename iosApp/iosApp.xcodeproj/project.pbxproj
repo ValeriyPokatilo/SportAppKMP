@@ -70,9 +70,9 @@
 		7654E5572F019E77003E0465 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				7654E55D2F019E89003E0465 /* App */,
 				7654E5562F019E77003E0465 /* iOSApp.swift */,
 				7654E5602F019F2E003E0465 /* Presentation */,
-				7654E55D2F019E89003E0465 /* App */,
 				7654E5522F019E77003E0465 /* Preview Content */,
 			);
 			path = iosApp;
