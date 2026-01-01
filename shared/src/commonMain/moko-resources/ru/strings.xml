@@ -6,4 +6,35 @@
     <string name="infoTabTitle">Инфо</string>
     <!-- Search bar -->
     <string name="searchBarPlaceholder">Поиск ...</string>
+    <!-- Muscle groups -->
+    <string name="arms">Руки</string>
+    <string name="back">Спина</string>
+    <string name="cardio">Кардио</string>
+    <string name="chest">Грудные</string>
+    <string name="coreAbs">Кор / Пресс</string>
+    <string name="fullBody">Все тело</string>
+    <string name="legs">Ноги</string>
+    <string name="neck">Шея</string>
+    <string name="other">Прочее</string>
+    <string name="shoulders">Плечи</string>
+    <!-- Equipments -->
+    <string name="ball">Мяч</string>
+    <string name="barbell">Штанга</string>
+    <string name="bench">Скамейка</string>
+    <string name="bodyweight">Свой вес</string>
+    <string name="cardioMachine">Кардиотренажер</string>
+    <string name="dumbbell">Гантель</string>
+    <string name="kettlebell">Гиря</string>
+    <string name="machine">Тренажер</string>
+    <string name="other">Прочее</string>
+    <string name="parallelBars">Брусья</string>
+    <string name="plate">Блин</string>
+    <string name="pullUpBar">Турник</string>
+    <string name="resistanceBand">Резинка</string>
+    <string name="rope">Канат</string>
+    <!-- Unit type -->
+    <string name="withWeight">С весом</string>
+    <string name="withoutWeight">Без веса</string>
+    <string name="timer">Таймер</string>
+    <string name="distance">Дистанция</string>
 </resources>

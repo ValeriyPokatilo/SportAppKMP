@@ -1,5 +1,6 @@
 package app.xl.sportappkmp.models
 
+import app.xl.sportappkmp.utils.currentLanguageCode
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
@@ -14,4 +15,10 @@ data class Exercise(
     val iconName: String,
     val imageName: String,
     val canEdit: Boolean
-)
+) {
+    val localizedTitle: String
+        get() = when (currentLanguageCode()) {
+            "ru" -> titleRu
+            else -> titleEn
+        }
+}
