@@ -47,7 +47,7 @@ fun ExercisesScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp),
-            thickness = 2.dp,
+            thickness = 1.dp,
             color = Color.DarkGray
         )
 

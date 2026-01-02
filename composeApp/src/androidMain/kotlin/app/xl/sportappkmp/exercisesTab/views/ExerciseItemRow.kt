@@ -1,8 +1,8 @@
 package app.xl.sportappkmp.exercisesTab.views
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.sp
 import app.xl.sportappkmp.models.Exercise
 import app.xl.sportappkmp.models.localizedTitle
 import app.xl.sportappkmp.utils.Localizer
+import app.xl.sportappkmp.utils.getImageByFileName
+import dev.icerock.moko.resources.compose.painterResource
 
 @Composable
 fun ExerciseListRow(
@@ -41,7 +43,9 @@ fun ExerciseListRow(
         Row(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Box(
+            Image(
+                painter = painterResource(getImageByFileName(exercise.iconName)),
+                contentDescription = "contentDescription",
                 modifier = Modifier
                     .size(68.dp)
                     .border(
