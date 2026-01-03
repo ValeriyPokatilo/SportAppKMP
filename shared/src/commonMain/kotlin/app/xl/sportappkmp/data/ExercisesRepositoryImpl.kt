@@ -1,6 +1,9 @@
 package app.xl.sportappkmp.data
 
+import app.xl.sportappkmp.models.Equipment
 import app.xl.sportappkmp.models.Exercise
+import app.xl.sportappkmp.models.MuscleGroup
+import app.xl.sportappkmp.models.UnitType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,12 +17,20 @@ object ExercisesRepositoryImpl: ExercisesRepository {
         return exerciseStateFlow.asStateFlow()
     }
 
-    override fun searchExercise(query: String): Flow<List<Exercise>> {
+    override fun searchExercise(
+        query: String,
+        equipment: Equipment?,
+        muscleGroup: MuscleGroup?,
+        unitType: UnitType?
+    ): Flow<List<Exercise>> {
         return exerciseStateFlow.map { currentList ->
             currentList.filter { exercise ->
-                // TODO: - use localizedTitle
-                exercise.titleRu.lowercase().contains(query.lowercase()) ||
-                        exercise.titleEn.lowercase().contains(query.lowercase())
+                val matchesQuery = query.isBlank() || exercise.localizedTitle.lowercase()
+                    .contains(query.lowercase())
+                val matchesEquipment = equipment == null || exercise.equipment.contains(equipment)
+                val matchesMuscleGroups = muscleGroup == null || exercise.muscleGroups.contains(muscleGroup)
+                val matchesUnitType = unitType == null || exercise.unitType == unitType
+                matchesQuery && matchesEquipment && matchesMuscleGroups && matchesUnitType
             }
         }
     }

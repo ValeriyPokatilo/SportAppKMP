@@ -37,4 +37,11 @@
     <string name="withoutWeight">Without weight</string>
     <string name="timer">Timer</string>
     <string name="distance">Distance</string>
+    <!-- Summary titles for enums -->
+    <string name="equipments">Equipments</string>
+    <string name="muscles">Muscles</string>
+    <string name="UnitTypes">Unit types</string>
+    <string name="allEquipment">All Equipments</string>
+    <string name="allMuscles">All muscles</string>
+    <string name="allUnitTypes">All types</string>
 </resources>

@@ -37,4 +37,11 @@
     <string name="withoutWeight">Без веса</string>
     <string name="timer">Таймер</string>
     <string name="distance">Дистанция</string>
+    <!-- Summary titles for enums -->
+    <string name="equipments">Оборудование</string>
+    <string name="muscles">Мышцы</string>
+    <string name="UnitTypes">Типы</string>
+    <string name="allEquipment">Все оборудование</string>
+    <string name="allMuscles">Все мышцы</string>
+    <string name="allUnitTypes">Все типы</string>
 </resources>
