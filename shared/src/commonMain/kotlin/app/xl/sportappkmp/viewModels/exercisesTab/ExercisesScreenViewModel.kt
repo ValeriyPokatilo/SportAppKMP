@@ -4,6 +4,7 @@ import app.xl.sportappkmp.data.ExercisesRepository
 import app.xl.sportappkmp.data.ExercisesRepositoryImpl
 import app.xl.sportappkmp.models.Equipment
 import app.xl.sportappkmp.models.Exercise
+import app.xl.sportappkmp.models.FilterSheetType
 import app.xl.sportappkmp.models.MuscleGroup
 import app.xl.sportappkmp.models.UnitType
 import dev.icerock.moko.mvvm.flow.CStateFlow
@@ -31,6 +32,7 @@ class ExercisesScreenViewModel: ViewModel() {
     private val _state = MutableStateFlow<ExerciseListState>(ExerciseListState())
     val state: CStateFlow<ExerciseListState> = _state.asStateFlow().cStateFlow()
 
+    // TODO: - can't use the optional FilterSheetType - crash on iOS
     private val _activeSheet = MutableStateFlow<FilterSheetType>(FilterSheetType.NONE)
     val activeSheet: CStateFlow<FilterSheetType> = _activeSheet.asStateFlow().cStateFlow()
 
@@ -108,11 +110,4 @@ class ExercisesScreenViewModel: ViewModel() {
     fun closeSheet() {
         _activeSheet.value = FilterSheetType.NONE
     }
-}
-
-enum class FilterSheetType(val id: String) {
-    EQUIPMENT("equipment"),
-    MUSCLE("muscle"),
-    UNIT_TYPE("unitType"),
-    NONE("none")
 }
