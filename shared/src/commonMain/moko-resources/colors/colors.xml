@@ -10,5 +10,5 @@
     </color>
 
     <!-- App colors -->
-    <color name="systemGreen">0x34C759</color>
+    <color name="baseGreen">0x34C759</color>
 </resources>
