@@ -15,7 +15,7 @@ struct WorkoutsScreen: View {
             VStack {
 
             }
-            .navigationTitle(Localizer().get(id: MR.strings().workoutsTabTitle, args: []))
+            .navigationTitle(Localizer().get(id: MR.strings().workoutsTabTitle))
         }
     }
 }

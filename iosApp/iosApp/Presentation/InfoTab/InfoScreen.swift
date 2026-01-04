@@ -14,7 +14,7 @@ struct InfoScreen: View {
             VStack {
 
             }
-            .navigationTitle(Localizer().get(id: MR.strings().infoTabTitle, args: []))
+            .navigationTitle(Localizer().get(id: MR.strings().infoTabTitle))
         }
     }
 }

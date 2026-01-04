@@ -33,14 +33,14 @@ struct ExerciseListRow: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(
                         exercise.muscleGroups
-                            .map { localizer.get(id: $0.titleRes, args: []) }
+                            .map { localizer.get(id: $0.titleRes) }
                             .joined(separator: ", ")
                     )
                     .font(.system(size: 12))
                     
                     Text(
                         exercise.equipment
-                            .map { localizer.get(id: $0.titleRes, args: []) }
+                            .map { localizer.get(id: $0.titleRes) }
                             .joined(separator: ", ")
                     )
                     .font(.system(size: 12))

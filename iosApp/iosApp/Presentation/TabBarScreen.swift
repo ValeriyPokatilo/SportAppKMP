@@ -20,17 +20,17 @@ struct TabBarScreen: View {
         TabView(selection: $selectedTab) {
             WorkoutsScreen()
                 .tabItem {
-                    Label(Localizer().get(id: MR.strings().workoutsTabTitle, args: []), systemImage: "house")
+                    Label(Localizer().get(id: MR.strings().workoutsTabTitle), systemImage: "house")
                 }
                 .tag(TabItem.workouts)
             ExercisesScreen()
                 .tabItem {
-                    Label(Localizer().get(id: MR.strings().exercisesTabTitle, args: []), systemImage: "house")
+                    Label(Localizer().get(id: MR.strings().exercisesTabTitle), systemImage: "house")
                 }
                 .tag(TabItem.exercises)
             InfoScreen()
                 .tabItem {
-                    Label(Localizer().get(id: MR.strings().infoTabTitle, args: []), systemImage: "house")
+                    Label(Localizer().get(id: MR.strings().infoTabTitle), systemImage: "house")
                 }
                 .tag(TabItem.info)
         }

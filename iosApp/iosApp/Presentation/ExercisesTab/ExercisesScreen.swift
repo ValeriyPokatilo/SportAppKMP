@@ -12,6 +12,8 @@ struct ExercisesScreen: View {
 
     @ObservedObject var viewModel = ExercisesScreenViewModel()
     
+    private let localizer = Localizer()
+    
     private var screenState: ExerciseListState {
         viewModel.state(
             \.state,
@@ -27,19 +29,72 @@ struct ExercisesScreen: View {
         )
     }
     
+    private var activeSheetBinding: Binding<FilterSheetType?> {
+        Binding(
+            get: {
+                let sheet = viewModel.state(\.activeSheet, equals: { $0 == $1 }, mapper: { $0 })
+                return sheet == .none ? nil : sheet
+            },
+            set: { newValue in
+                if let sheet = newValue {
+                    viewModel.openSheet(type: sheet)
+                } else {
+                    viewModel.closeSheet()
+                }
+            }
+        )
+    }
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 TextField(
-                    Localizer().get(id: MR.strings().searchBarPlaceholder, args: []),
+                    localizer.get(id: MR.strings().searchBarPlaceholder),
                     text: queryBinding
                 )
                 .padding()
                 .overlay {
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.gray, lineWidth: 1)
+                    
+                    if !queryBinding.wrappedValue.isEmpty {
+                        HStack {
+                            Spacer()
+                            Button {
+                                queryBinding.wrappedValue = ""
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 12)
+                            }
+                            .transition(.opacity.combined(with: .scale))
+                        }
+                    }
                 }
                 .padding(.horizontal, 20)
+                
+                Spacer()
+                    .frame(height: 16)
+                
+                ExercisesFilterBar(
+                    equipmentTitle: localizer.getOpt(id: screenState.equipment?.titleRes) ?? localizer.get(id: MR.strings().allEquipment),
+                    muscleGroupTitle: localizer.getOpt(id: screenState.muscleGroup?.titleRes) ?? localizer.get(id: MR.strings().allMuscles),
+                    unitTypeTitle: localizer.getOpt(id: screenState.unitType?.titleRes) ?? localizer.get(id: MR.strings().allUnitTypes),
+                    showResetButton: screenState.equipment != nil || screenState.muscleGroup != nil || screenState.unitType != nil,
+                    onEquipmentTap: {
+                        viewModel.openSheet(type: .equipment)
+                    },
+                    onMuscleGroupTap: {
+                        viewModel.openSheet(type: .muscle)
+                    },
+                    onUnitTypeTap: {
+                        viewModel.openSheet(type: .unitType)
+                    },
+                    onResetButtonTap: {
+                        viewModel.resetFilters()
+                    }
+                )
+                    .padding(.horizontal, 20)
                 
                 Spacer()
                     .frame(height: 16)
@@ -58,9 +113,39 @@ struct ExercisesScreen: View {
                 .scrollContentBackground(.hidden)
             }
             .navigationTitle(
-                Localizer().get(id: MR.strings().exercisesTabTitle, args: [])
+                localizer.get(id: MR.strings().exercisesTabTitle)
             )
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(item: activeSheetBinding) { sheet in
+                switch sheet {
+                case .equipment:
+                    EnumPickerSheet(
+                        items: Equipment.companion.allCases,
+                        onSelect: { selected in
+                            viewModel.onEquipmentChange(equipment: selected)
+                            viewModel.closeSheet()
+                        }
+                    )
+                case .muscle:
+                    EnumPickerSheet(
+                        items: MuscleGroup.companion.allCases,
+                        onSelect: { selected in
+                            viewModel.onMuscleGroupChange(muscleGroup: selected)
+                            viewModel.closeSheet()
+                        }
+                    )
+                case .unitType:
+                    EnumPickerSheet(
+                        items: UnitType.companion.allCases,
+                        onSelect: { selected in
+                            viewModel.onUnitTypeChange(unitType: selected)
+                            viewModel.closeSheet()
+                        }
+                    )
+                default:
+                    EmptyView()
+                }
+            }
         }
     }
 }

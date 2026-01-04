@@ -14,11 +14,15 @@
 		7654E5652F01A004003E0465 /* WorkoutsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5642F01A004003E0465 /* WorkoutsScreen.swift */; };
 		7654E5672F01A022003E0465 /* ExercisesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5662F01A022003E0465 /* ExercisesScreen.swift */; };
 		7654E5692F01A02B003E0465 /* InfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5682F01A02B003E0465 /* InfoScreen.swift */; };
-		7654E5722F01C133003E0465 /* CFlowExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E56B2F01C133003E0465 /* CFlowExt.swift */; };
-		7654E5732F01C133003E0465 /* ViewModelStateNullable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5702F01C133003E0465 /* ViewModelStateNullable.swift */; };
-		7654E5742F01C133003E0465 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E56D2F01C133003E0465 /* ViewModelBinding.swift */; };
-		7654E5752F01C133003E0465 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E56F2F01C133003E0465 /* ViewModelState.swift */; };
-		7654E5762F01C133003E0465 /* ViewModelObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E56E2F01C133003E0465 /* ViewModelObservable.swift */; };
+		7670F3852F090A4E00C96A69 /* ExercisesFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3842F090A4E00C96A69 /* ExercisesFilterBar.swift */; };
+		7670F3872F090A6900C96A69 /* ExercisesFilterBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3862F090A6900C96A69 /* ExercisesFilterBarButton.swift */; };
+		7670F3892F0928AF00C96A69 /* EnumPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3882F0928AF00C96A69 /* EnumPickerSheet.swift */; };
+		7670F3912F0969EC00C96A69 /* Ext+FilterSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3902F0969EC00C96A69 /* Ext+FilterSheetType.swift */; };
+		7670F3A52F096EA300C96A69 /* ViewModelObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3A12F096EA300C96A69 /* ViewModelObservable.swift */; };
+		7670F3A62F096EA300C96A69 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3A02F096EA300C96A69 /* ViewModelBinding.swift */; };
+		7670F3A72F096EA300C96A69 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3A22F096EA300C96A69 /* ViewModelState.swift */; };
+		7670F3A82F096EA300C96A69 /* ViewModelStateNullable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3A32F096EA300C96A69 /* ViewModelStateNullable.swift */; };
+		7670F3A92F096EA300C96A69 /* CFlowExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F39E2F096EA300C96A69 /* CFlowExt.swift */; };
 		76951C8E2F07C140003311F2 /* ExerciseListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76951C8D2F07C140003311F2 /* ExerciseListRow.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,12 +37,16 @@
 		7654E5642F01A004003E0465 /* WorkoutsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsScreen.swift; sourceTree = "<group>"; };
 		7654E5662F01A022003E0465 /* ExercisesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesScreen.swift; sourceTree = "<group>"; };
 		7654E5682F01A02B003E0465 /* InfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreen.swift; sourceTree = "<group>"; };
-		7654E56B2F01C133003E0465 /* CFlowExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFlowExt.swift; sourceTree = "<group>"; };
-		7654E56C2F01C133003E0465 /* mokoMvvmFlowSwiftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mokoMvvmFlowSwiftUI.h; sourceTree = "<group>"; };
-		7654E56D2F01C133003E0465 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
-		7654E56E2F01C133003E0465 /* ViewModelObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelObservable.swift; sourceTree = "<group>"; };
-		7654E56F2F01C133003E0465 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
-		7654E5702F01C133003E0465 /* ViewModelStateNullable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelStateNullable.swift; sourceTree = "<group>"; };
+		7670F3842F090A4E00C96A69 /* ExercisesFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesFilterBar.swift; sourceTree = "<group>"; };
+		7670F3862F090A6900C96A69 /* ExercisesFilterBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesFilterBarButton.swift; sourceTree = "<group>"; };
+		7670F3882F0928AF00C96A69 /* EnumPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPickerSheet.swift; sourceTree = "<group>"; };
+		7670F3902F0969EC00C96A69 /* Ext+FilterSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+FilterSheetType.swift"; sourceTree = "<group>"; };
+		7670F39E2F096EA300C96A69 /* CFlowExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFlowExt.swift; sourceTree = "<group>"; };
+		7670F39F2F096EA300C96A69 /* mokoMvvmFlowSwiftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mokoMvvmFlowSwiftUI.h; sourceTree = "<group>"; };
+		7670F3A02F096EA300C96A69 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
+		7670F3A12F096EA300C96A69 /* ViewModelObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelObservable.swift; sourceTree = "<group>"; };
+		7670F3A22F096EA300C96A69 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
+		7670F3A32F096EA300C96A69 /* ViewModelStateNullable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelStateNullable.swift; sourceTree = "<group>"; };
 		76951C8D2F07C140003311F2 /* ExerciseListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +83,8 @@
 				7654E55D2F019E89003E0465 /* App */,
 				7654E5562F019E77003E0465 /* iOSApp.swift */,
 				7654E5602F019F2E003E0465 /* Presentation */,
+				7670F38F2F0969C800C96A69 /* Extensions */,
+				7654E56A2F01C129003E0465 /* Utils */,
 				7654E5522F019E77003E0465 /* Preview Content */,
 			);
 			path = iosApp;
@@ -96,7 +106,6 @@
 				7654E5612F019F3C003E0465 /* WorkoutsTab */,
 				7654E5622F019F4B003E0465 /* ExercisesTab */,
 				7654E5632F019F56003E0465 /* InfoTab */,
-				7654E56A2F01C129003E0465 /* Utils */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -129,20 +138,28 @@
 		7654E56A2F01C129003E0465 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7654E5712F01C133003E0465 /* mokoMvvmFlowSwiftUI */,
+				7670F3A42F096EA300C96A69 /* mokoMvvmFlowSwiftUI */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		7654E5712F01C133003E0465 /* mokoMvvmFlowSwiftUI */ = {
+		7670F38F2F0969C800C96A69 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7654E56B2F01C133003E0465 /* CFlowExt.swift */,
-				7654E56C2F01C133003E0465 /* mokoMvvmFlowSwiftUI.h */,
-				7654E56D2F01C133003E0465 /* ViewModelBinding.swift */,
-				7654E56E2F01C133003E0465 /* ViewModelObservable.swift */,
-				7654E56F2F01C133003E0465 /* ViewModelState.swift */,
-				7654E5702F01C133003E0465 /* ViewModelStateNullable.swift */,
+				7670F3902F0969EC00C96A69 /* Ext+FilterSheetType.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7670F3A42F096EA300C96A69 /* mokoMvvmFlowSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				7670F39E2F096EA300C96A69 /* CFlowExt.swift */,
+				7670F39F2F096EA300C96A69 /* mokoMvvmFlowSwiftUI.h */,
+				7670F3A02F096EA300C96A69 /* ViewModelBinding.swift */,
+				7670F3A12F096EA300C96A69 /* ViewModelObservable.swift */,
+				7670F3A22F096EA300C96A69 /* ViewModelState.swift */,
+				7670F3A32F096EA300C96A69 /* ViewModelStateNullable.swift */,
 			);
 			path = mokoMvvmFlowSwiftUI;
 			sourceTree = "<group>";
@@ -151,6 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				76951C8D2F07C140003311F2 /* ExerciseListRow.swift */,
+				7670F3842F090A4E00C96A69 /* ExercisesFilterBar.swift */,
+				7670F3862F090A6900C96A69 /* ExercisesFilterBarButton.swift */,
+				7670F3882F0928AF00C96A69 /* EnumPickerSheet.swift */,
 			);
 			path = ExercisesScreenViews;
 			sourceTree = "<group>";
@@ -271,12 +291,16 @@
 				7654E5592F019E77003E0465 /* iOSApp.swift in Sources */,
 				7654E5652F01A004003E0465 /* WorkoutsScreen.swift in Sources */,
 				7654E55F2F019EC3003E0465 /* TabBarScreen.swift in Sources */,
-				7654E5722F01C133003E0465 /* CFlowExt.swift in Sources */,
 				76951C8E2F07C140003311F2 /* ExerciseListRow.swift in Sources */,
-				7654E5732F01C133003E0465 /* ViewModelStateNullable.swift in Sources */,
-				7654E5742F01C133003E0465 /* ViewModelBinding.swift in Sources */,
-				7654E5752F01C133003E0465 /* ViewModelState.swift in Sources */,
-				7654E5762F01C133003E0465 /* ViewModelObservable.swift in Sources */,
+				7670F3852F090A4E00C96A69 /* ExercisesFilterBar.swift in Sources */,
+				7670F3892F0928AF00C96A69 /* EnumPickerSheet.swift in Sources */,
+				7670F3912F0969EC00C96A69 /* Ext+FilterSheetType.swift in Sources */,
+				7670F3A52F096EA300C96A69 /* ViewModelObservable.swift in Sources */,
+				7670F3A62F096EA300C96A69 /* ViewModelBinding.swift in Sources */,
+				7670F3A72F096EA300C96A69 /* ViewModelState.swift in Sources */,
+				7670F3A82F096EA300C96A69 /* ViewModelStateNullable.swift in Sources */,
+				7670F3A92F096EA300C96A69 /* CFlowExt.swift in Sources */,
+				7670F3872F090A6900C96A69 /* ExercisesFilterBarButton.swift in Sources */,
 				7654E5692F01A02B003E0465 /* InfoScreen.swift in Sources */,
 				7654E5672F01A022003E0465 /* ExercisesScreen.swift in Sources */,
 			);
