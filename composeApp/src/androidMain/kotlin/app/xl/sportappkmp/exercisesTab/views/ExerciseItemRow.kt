@@ -43,15 +43,15 @@ fun ExerciseListRow(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Image(
-                painter = painterResource(getImageByFileName(exercise.iconName)),
-                contentDescription = "contentDescription",
                 modifier = Modifier
                     .size(68.dp)
                     .border(
                         width = 1.dp,
                         color = Color.DarkGray,
                         shape = RoundedCornerShape(12.dp)
-                    )
+                    ),
+                painter = painterResource(getImageByFileName(exercise.iconName)),
+                contentDescription = "Exercise icon",
             )
 
             Column(
