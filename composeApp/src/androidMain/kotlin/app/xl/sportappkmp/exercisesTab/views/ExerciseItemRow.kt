@@ -17,7 +17,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.xl.sportappkmp.models.Exercise
-import app.xl.sportappkmp.models.localizedTitle
 import app.xl.sportappkmp.utils.Localizer
 import app.xl.sportappkmp.utils.getImageByFileName
 import dev.icerock.moko.resources.compose.painterResource
