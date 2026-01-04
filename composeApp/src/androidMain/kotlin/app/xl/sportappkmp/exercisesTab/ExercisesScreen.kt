@@ -1,5 +1,6 @@
 package app.xl.sportappkmp.exercisesTab
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -47,9 +48,12 @@ fun ExercisesScreen(
     )
 
     val localizer = Localizer(LocalContext.current)
+    val context = LocalContext.current.applicationContext
 
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color(MR.colors.baseGray.getColor(context)))
     ) {
         SearchBar(
             modifier = Modifier.padding(horizontal = 24.dp),

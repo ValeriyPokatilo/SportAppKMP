@@ -15,7 +15,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import app.xl.sportappkmp.exercisesTab.ExercisesScreen
 import app.xl.sportappkmp.infoTab.InfoScreen
 import app.xl.sportappkmp.utils.localizer
@@ -54,7 +56,10 @@ fun BottomBarScreen() {
         mutableStateOf(BottomBarDestination.EXERCISES) // TODO: - set WORKOUTS
     }
 
+    val context = LocalContext.current.applicationContext
+
     Scaffold(
+        containerColor = Color(MR.colors.baseGray.getColor(context)),
         bottomBar = {
             NavigationBar {
                 items.forEach { item ->

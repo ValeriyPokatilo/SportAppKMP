@@ -12,6 +12,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -49,7 +51,13 @@ fun ExerciseListRow(
                         width = 1.dp,
                         color = Color.DarkGray,
                         shape = RoundedCornerShape(12.dp)
-                    ),
+                    )
+                    .shadow(
+                        elevation = 8.dp,
+                        shape = RoundedCornerShape(12.dp),
+                        clip = false
+                    )
+                    .clip(RoundedCornerShape(12.dp)),
                 painter = painterResource(getImageByFileName(exercise.iconName)),
                 contentDescription = "Exercise icon",
             )
