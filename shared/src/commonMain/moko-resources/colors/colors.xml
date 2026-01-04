@@ -11,4 +11,5 @@
 
     <!-- App colors -->
     <color name="baseGreen">0x34C759</color>
+    <color name="baseGray">0xF3F3F3</color>
 </resources>
