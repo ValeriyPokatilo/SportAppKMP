@@ -47,8 +47,9 @@ fun ExercisesScreen(
         skipPartiallyExpanded = true
     )
 
-    val localizer = Localizer(LocalContext.current)
-    val context = LocalContext.current.applicationContext
+    val context = LocalContext.current
+    val localizer = Localizer(context)
+
 
     Column(
         modifier = modifier
