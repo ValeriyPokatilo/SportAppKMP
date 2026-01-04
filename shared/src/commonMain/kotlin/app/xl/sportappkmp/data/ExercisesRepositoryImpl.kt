@@ -27,7 +27,7 @@ object ExercisesRepositoryImpl: ExercisesRepository {
             currentList.filter { exercise ->
                 val matchesQuery = query.isBlank() || exercise.localizedTitle.lowercase()
                     .contains(query.lowercase())
-                val matchesEquipment = equipment == null || exercise.equipment.contains(equipment)
+                val matchesEquipment = equipment == null || exercise.equipments.contains(equipment)
                 val matchesMuscleGroups = muscleGroup == null || exercise.muscleGroups.contains(muscleGroup)
                 val matchesUnitType = unitType == null || exercise.unitType == unitType
                 matchesQuery && matchesEquipment && matchesMuscleGroups && matchesUnitType

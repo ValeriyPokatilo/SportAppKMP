@@ -16,7 +16,7 @@ object ExercisesStorage {
             MuscleGroup.CARDIO,
             MuscleGroup.CORE_ABS
         ),
-        equipment = listOf(Equipment.BODY_WEIGHT),
+        equipments = listOf(Equipment.BODY_WEIGHT),
         iconName = "treadmillImageIcon",
         imageName = "treadmillImage",
         canEdit = false
@@ -28,7 +28,7 @@ object ExercisesStorage {
         titleEn = "Smith Machine Vertical Leg Press",
         unitType = UnitType.WITH_WEIGHT,
         muscleGroups = listOf(MuscleGroup.LEGS),
-        equipment = listOf(Equipment.MACHINE),
+        equipments = listOf(Equipment.MACHINE),
         iconName = "smithMachineVerticalLegPressIcon",
         imageName = "smithMachineVerticalLegPressImage",
         canEdit = false
@@ -40,7 +40,7 @@ object ExercisesStorage {
         titleEn = "Seated Machine Shoulder Press",
         unitType = UnitType.WITH_WEIGHT,
         muscleGroups = listOf(MuscleGroup.SHOULDERS),
-        equipment = listOf(Equipment.MACHINE),
+        equipments = listOf(Equipment.MACHINE),
         iconName = "machineShoulderPressIcon",
         imageName = "machineShoulderPressImage",
         canEdit = false
@@ -52,7 +52,7 @@ object ExercisesStorage {
         titleEn = "Barbell Bench Press",
         unitType = UnitType.WITH_WEIGHT,
         muscleGroups = listOf(MuscleGroup.CHEST, MuscleGroup.ARMS, MuscleGroup.SHOULDERS),
-        equipment = listOf(Equipment.BARBELL, Equipment.BENCH),
+        equipments = listOf(Equipment.BARBELL, Equipment.BENCH),
         iconName = "barbellBenchPressIcon",
         imageName = "barbellBenchPressImage",
         canEdit = false
@@ -64,7 +64,7 @@ object ExercisesStorage {
         titleEn = "Dumbbell Lateral Raise",
         unitType = UnitType.WITH_WEIGHT,
         muscleGroups = listOf(MuscleGroup.SHOULDERS),
-        equipment = listOf(Equipment.DUMBBELL),
+        equipments = listOf(Equipment.DUMBBELL),
         iconName = "dumbbellLateralRaiseIcon",
         imageName = "dumbbellLateralRaiseImage",
         canEdit = false
@@ -76,7 +76,7 @@ object ExercisesStorage {
         titleEn = "Push-Ups",
         unitType = UnitType.WITHOUT_WEUGHT,
         muscleGroups = listOf(MuscleGroup.CHEST, MuscleGroup.ARMS, MuscleGroup.SHOULDERS),
-        equipment = listOf(Equipment.BODY_WEIGHT),
+        equipments = listOf(Equipment.BODY_WEIGHT),
         iconName = "pushUpsIcon",
         imageName = "pushUpsImage",
         canEdit = false
@@ -88,7 +88,7 @@ object ExercisesStorage {
         titleEn = "Diamond Push-Ups",
         unitType = UnitType.WITHOUT_WEUGHT,
         muscleGroups = listOf(MuscleGroup.ARMS, MuscleGroup.CHEST),
-        equipment = listOf(Equipment.BODY_WEIGHT),
+        equipments = listOf(Equipment.BODY_WEIGHT),
         iconName = "diamondPushUpsIcon",
         imageName = "diamondPushUpsImage",
         canEdit = false
@@ -100,7 +100,7 @@ object ExercisesStorage {
         titleEn = "Pull-Up",
         unitType = UnitType.WITHOUT_WEUGHT,
         muscleGroups = listOf(MuscleGroup.BACK),
-        equipment = listOf(Equipment.PULL_UP_BAR),
+        equipments = listOf(Equipment.PULL_UP_BAR),
         iconName = "pullUpIcon",
         imageName = "pullUpImage",
         canEdit = false
@@ -112,7 +112,7 @@ object ExercisesStorage {
         titleEn = "Alternating Dumbbell Curl",
         unitType = UnitType.WITH_WEIGHT,
         muscleGroups = listOf(MuscleGroup.ARMS),
-        equipment = listOf(Equipment.DUMBBELL),
+        equipments = listOf(Equipment.DUMBBELL),
         iconName = "alternatingDumbbellCurlIcon",
         imageName = "alternatingDumbbellCurlImage",
         canEdit = false
@@ -124,7 +124,7 @@ object ExercisesStorage {
         titleEn = "Bodyweight Squat",
         unitType = UnitType.WITHOUT_WEUGHT,
         muscleGroups = listOf(MuscleGroup.LEGS),
-        equipment = listOf(Equipment.BODY_WEIGHT),
+        equipments = listOf(Equipment.BODY_WEIGHT),
         iconName = "bodyweightSquatIcon",
         imageName = "bodyweightSquatImage",
         canEdit = false
@@ -136,7 +136,7 @@ object ExercisesStorage {
         titleEn = "Jump Rope",
         unitType = UnitType.TIMER,
         muscleGroups = listOf(MuscleGroup.LEGS, MuscleGroup.CARDIO),
-        equipment = listOf(Equipment.OTHER),
+        equipments = listOf(Equipment.OTHER),
         iconName = "jumpRopeIcon",
         imageName = "jumpRopeImage",
         canEdit = false
@@ -148,7 +148,7 @@ object ExercisesStorage {
         titleEn = "Cable Tricep Pushdown",
         unitType = UnitType.WITH_WEIGHT,
         muscleGroups = listOf(MuscleGroup.ARMS),
-        equipment = listOf(Equipment.MACHINE),
+        equipments = listOf(Equipment.MACHINE),
         iconName = "cableTricepPushdownIcon",
         imageName = "cableTricepPushdownImage",
         canEdit = false
@@ -160,7 +160,7 @@ object ExercisesStorage {
         titleEn = "Seated Dumbbell Bicep Curl",
         unitType = UnitType.WITH_WEIGHT,
         muscleGroups = listOf(MuscleGroup.ARMS),
-        equipment = listOf(Equipment.DUMBBELL, Equipment.BENCH),
+        equipments = listOf(Equipment.DUMBBELL, Equipment.BENCH),
         iconName = "seatedDumbbellBicepCurlIcon",
         imageName = "seatedDumbbellBicepCurlImage",
         canEdit = false
@@ -172,7 +172,7 @@ object ExercisesStorage {
         titleEn = "Dumbbell Bicep Curl",
         unitType = UnitType.WITH_WEIGHT,
         muscleGroups = listOf(MuscleGroup.ARMS),
-        equipment = listOf(Equipment.DUMBBELL),
+        equipments = listOf(Equipment.DUMBBELL),
         iconName = "dumbbellBicepCurlIcon",
         imageName = "dumbbellBicepCurlImage",
         canEdit = false
@@ -184,7 +184,7 @@ object ExercisesStorage {
         titleEn = "Seated Dumbbell Lateral Raise",
         unitType = UnitType.WITH_WEIGHT,
         muscleGroups = listOf(MuscleGroup.SHOULDERS),
-        equipment = listOf(Equipment.DUMBBELL),
+        equipments = listOf(Equipment.DUMBBELL),
         iconName = "seatedDumbbellLateralRaiseIcon",
         imageName = "seatedDumbbellLateralRaiseImage",
         canEdit = false
@@ -196,7 +196,7 @@ object ExercisesStorage {
         titleEn = "Elliptical",
         unitType = UnitType.DISTANCE,
         muscleGroups = listOf(MuscleGroup.CARDIO, MuscleGroup.LEGS, MuscleGroup.ARMS),
-        equipment = listOf(Equipment.CARDIO_MACHINE),
+        equipments = listOf(Equipment.CARDIO_MACHINE),
         iconName = "ellipticalIcon",
         imageName = "ellipticalImage",
         canEdit = false

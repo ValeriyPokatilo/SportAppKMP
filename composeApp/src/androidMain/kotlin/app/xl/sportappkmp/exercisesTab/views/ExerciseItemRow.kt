@@ -65,7 +65,7 @@ fun ExerciseListRow(
 
                 ExerciseListRowText(
                     text = exercise
-                        .equipment
+                        .equipments
                         .joinToString(", ") { it.localizedTitle(localizer) },
                 )
 
