@@ -34,4 +34,10 @@ object ExercisesRepositoryImpl: ExercisesRepository {
             }
         }
     }
+
+    override suspend fun getExercise(id: String): Exercise {
+        return exerciseStateFlow.value.first {
+            it.id == id
+        }
+    }
 }

@@ -8,10 +8,13 @@ import kotlinx.coroutines.flow.Flow
 
 interface ExercisesRepository {
     fun getAllExercises(): Flow<List<Exercise>>
+
     fun searchExercise(
         query: String,
         equipment: Equipment? = null,
         muscleGroup: MuscleGroup? = null,
         unitType: UnitType? = null
     ): Flow<List<Exercise>>
+
+    suspend fun getExercise(id: String): Exercise
 }
