@@ -110,4 +110,6 @@ class ExercisesScreenViewModel: ViewModel() {
     fun closeSheet() {
         _activeSheet.value = FilterSheetType.NONE
     }
+
+    // TODO: - Use EventsDispatcher
 }
