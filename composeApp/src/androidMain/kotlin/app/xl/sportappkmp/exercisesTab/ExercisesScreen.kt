@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -38,7 +39,8 @@ import app.xl.sportappkmp.viewModels.exercisesTab.ExercisesScreenViewModel
 @Composable
 fun ExercisesScreen(
     modifier: Modifier = Modifier,
-    viewModel: ExercisesScreenViewModel = viewModel()
+    viewModel: ExercisesScreenViewModel = viewModel(),
+    onExerciseClick: (String) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val activeSheet by viewModel.activeSheet.collectAsStateWithLifecycle()
@@ -54,6 +56,7 @@ fun ExercisesScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
+            .statusBarsPadding()
             .background(Color(MR.colors.baseGray.getColor(context)))
     ) {
         SearchBar(
@@ -106,7 +109,8 @@ fun ExercisesScreen(
             ) { index, exercise ->
                 ExerciseListRow(
                     localizer = localizer,
-                    exercise = exercise
+                    exercise = exercise,
+                    onClick = onExerciseClick
                 )
             }
         }

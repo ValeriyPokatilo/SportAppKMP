@@ -1,6 +1,8 @@
 package app.xl.sportappkmp
 
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.Home
@@ -18,13 +20,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import app.xl.sportappkmp.exercisesTab.ExerciseTabNavGraph
 import app.xl.sportappkmp.exercisesTab.ExercisesScreen
 import app.xl.sportappkmp.infoTab.InfoScreen
 import app.xl.sportappkmp.utils.localizer
 import app.xl.sportappkmp.workoutsTab.WorkoutsScreen
 
 @Composable
-fun BottomBarScreen() {
+fun MainScreen() {
     val workoutsTitle = localizer(MR.strings.workoutsTabTitle)
     val exercisesTitle = localizer(MR.strings.exercisesTabTitle)
     val infoTitle = localizer(MR.strings.infoTabTitle)
@@ -59,6 +62,7 @@ fun BottomBarScreen() {
     val context = LocalContext.current.applicationContext
 
     Scaffold(
+        contentWindowInsets = WindowInsets.systemBars,
         containerColor = Color(MR.colors.baseGray.getColor(context)),
         bottomBar = {
             NavigationBar {
@@ -97,7 +101,7 @@ fun BottomBarScreen() {
                 WorkoutsScreen(modifier = paddingModifier)
             }
             BottomBarDestination.EXERCISES-> {
-                ExercisesScreen(modifier = paddingModifier)
+                ExerciseTabNavGraph()
             }
             BottomBarDestination.INFO -> {
                 InfoScreen(modifier = paddingModifier)

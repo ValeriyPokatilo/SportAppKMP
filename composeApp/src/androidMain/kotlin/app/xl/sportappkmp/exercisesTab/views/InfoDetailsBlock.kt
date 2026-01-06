@@ -22,7 +22,7 @@ import dev.icerock.moko.resources.ImageResource
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable
-fun DetailsBlock(
+fun InfoDetailsBlock(
     title: String,
     images: List<ImageResource>
 ) {

@@ -2,6 +2,7 @@ package app.xl.sportappkmp.exercisesTab.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,12 +28,16 @@ import dev.icerock.moko.resources.compose.painterResource
 fun ExerciseListRow(
     modifier: Modifier = Modifier,
     localizer: Localizer,
-    exercise: Exercise
+    exercise: Exercise,
+    onClick: (String) -> Unit
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(vertical = 8.dp)
+            .clickable {
+                onClick(exercise.id)
+            },
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
