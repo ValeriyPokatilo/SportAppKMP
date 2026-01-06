@@ -4,8 +4,12 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.automirrored.outlined.List
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.PlayCircle
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.PlayCircle
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -21,7 +25,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import app.xl.sportappkmp.exercisesTab.ExerciseTabNavGraph
-import app.xl.sportappkmp.exercisesTab.ExercisesScreen
 import app.xl.sportappkmp.infoTab.InfoScreen
 import app.xl.sportappkmp.utils.localizer
 import app.xl.sportappkmp.workoutsTab.WorkoutsScreen
@@ -37,26 +40,26 @@ fun MainScreen() {
             BottomBarItem(
                 title = workoutsTitle,
                 destination = BottomBarDestination.WORKOUTS,
-                selectedIcon = Icons.Filled.Home,  // TODO: - Move to resources
-                unselectedIcon = Icons.Outlined.Home  // TODO: - Move to resources
+                selectedIcon = Icons.Filled.PlayCircle,
+                unselectedIcon = Icons.Outlined.PlayCircle
             ),
             BottomBarItem(
                 title = exercisesTitle,
                 destination = BottomBarDestination.EXERCISES,
-                selectedIcon = Icons.Filled.Home, // TODO: - Move to resources
-                unselectedIcon = Icons.Outlined.Home // TODO: - Move to resources
+                selectedIcon = Icons.AutoMirrored.Filled.List,
+                unselectedIcon = Icons.AutoMirrored.Outlined.List
             ),
             BottomBarItem(
                 title = infoTitle,
                 destination = BottomBarDestination.INFO,
-                selectedIcon = Icons.Filled.Home, // TODO: - Move to resources
-                unselectedIcon = Icons.Outlined.Home // TODO: - Move to resources
+                selectedIcon = Icons.Filled.Info,
+                unselectedIcon = Icons.Outlined.Info
             )
         )
     }
 
     var selectedDestination by rememberSaveable {
-        mutableStateOf(BottomBarDestination.EXERCISES) // TODO: - set WORKOUTS
+        mutableStateOf(BottomBarDestination.WORKOUTS)
     }
 
     val context = LocalContext.current.applicationContext
