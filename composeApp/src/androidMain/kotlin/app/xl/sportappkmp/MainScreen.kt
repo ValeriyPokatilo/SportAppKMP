@@ -1,0 +1,127 @@
+package app.xl.sportappkmp
+
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.automirrored.outlined.List
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.PlayCircle
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.PlayCircle
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import app.xl.sportappkmp.exercisesTab.ExerciseTabNavGraph
+import app.xl.sportappkmp.infoTab.InfoScreen
+import app.xl.sportappkmp.utils.localizer
+import app.xl.sportappkmp.workoutsTab.WorkoutsScreen
+
+@Composable
+fun MainScreen() {
+    val workoutsTitle = localizer(MR.strings.workoutsTabTitle)
+    val exercisesTitle = localizer(MR.strings.exercisesTabTitle)
+    val infoTitle = localizer(MR.strings.infoTabTitle)
+
+    val items = rememberSaveable {
+        listOf(
+            BottomBarItem(
+                title = workoutsTitle,
+                destination = BottomBarDestination.WORKOUTS,
+                selectedIcon = Icons.Filled.PlayCircle,
+                unselectedIcon = Icons.Outlined.PlayCircle
+            ),
+            BottomBarItem(
+                title = exercisesTitle,
+                destination = BottomBarDestination.EXERCISES,
+                selectedIcon = Icons.AutoMirrored.Filled.List,
+                unselectedIcon = Icons.AutoMirrored.Outlined.List
+            ),
+            BottomBarItem(
+                title = infoTitle,
+                destination = BottomBarDestination.INFO,
+                selectedIcon = Icons.Filled.Info,
+                unselectedIcon = Icons.Outlined.Info
+            )
+        )
+    }
+
+    var selectedDestination by rememberSaveable {
+        mutableStateOf(BottomBarDestination.WORKOUTS)
+    }
+
+    val context = LocalContext.current.applicationContext
+
+    Scaffold(
+        contentWindowInsets = WindowInsets.systemBars,
+        containerColor = Color(MR.colors.baseGray.getColor(context)),
+        bottomBar = {
+            NavigationBar {
+                items.forEach { item ->
+
+                    val selected = item.destination == selectedDestination
+
+                    NavigationBarItem(
+                        selected = selected,
+                        onClick = {
+                            selectedDestination = item.destination
+                        },
+                        label = {
+                            Text(text = item.title)
+                        },
+                        icon = {
+                            Icon(
+                                imageVector = if (selected) {
+                                    item.selectedIcon
+                                } else {
+                                    item.unselectedIcon
+                                },
+                                contentDescription = item.title
+                            )
+                        }
+                    )
+                }
+            }
+        }
+    ) { innerPadding ->
+        val paddingModifier = Modifier
+            .padding(bottom = innerPadding.calculateBottomPadding())
+            .padding(top = innerPadding.calculateTopPadding())
+        when (selectedDestination) {
+            BottomBarDestination.WORKOUTS -> {
+                WorkoutsScreen(modifier = paddingModifier)
+            }
+            BottomBarDestination.EXERCISES-> {
+                ExerciseTabNavGraph()
+            }
+            BottomBarDestination.INFO -> {
+                InfoScreen(modifier = paddingModifier)
+            }
+        }
+    }
+}
+
+data class BottomBarItem(
+    val title: String,
+    val destination: BottomBarDestination,
+    val selectedIcon: ImageVector,
+    val unselectedIcon: ImageVector,
+)
+
+enum class BottomBarDestination {
+    WORKOUTS,
+    EXERCISES,
+    INFO
+}

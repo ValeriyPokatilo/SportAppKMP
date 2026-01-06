@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <!-- Tabs -->
+    <string name="workoutsTabTitle">Workouts</string>
+    <string name="exercisesTabTitle">Exercises</string>
+    <string name="infoTabTitle">Info</string>
+    <!-- Search bar -->
+    <string name="searchBarPlaceholder">Search ...</string>
+    <!-- Muscle groups -->
+    <string name="arms">Arms</string>
+    <string name="back">Back</string>
+    <string name="cardio">Cardio</string>
+    <string name="chest">Chest</string>
+    <string name="coreAbs">Core/Abs</string>
+    <string name="fullBody">Full Body</string>
+    <string name="legs">Legs</string>
+    <string name="neck">Neck</string>
+    <string name="other">Other</string>
+    <string name="shoulders">Shoulders</string>
+    <!-- Equipments -->
+    <string name="ball">Ball</string>
+    <string name="barbell">Barbell</string>
+    <string name="bench">Bench</string>
+    <string name="bodyweight">Bodyweight</string>
+    <string name="cardioMachine">Cardio machine</string>
+    <string name="dumbbell">Dumbbell</string>
+    <string name="kettlebell">Kettlebell</string>
+    <string name="machine">Machine</string>
+    <string name="other">Other</string>
+    <string name="parallelBars">Parallel bars</string>
+    <string name="plate">Plate</string>
+    <string name="pullUpBar">Pull up bar</string>
+    <string name="resistanceBand">Resistance band</string>
+    <string name="rope">Rope</string>
+    <!-- Unit type -->
+    <string name="withWeight">With weight</string>
+    <string name="withoutWeight">Without weight</string>
+    <string name="timer">Timer</string>
+    <string name="distance">Distance</string>
+    <!-- Summary titles for enums -->
+    <string name="equipments">Equipments</string>
+    <string name="muscles">Muscles</string>
+    <string name="UnitTypes">Unit types</string>
+    <string name="allEquipment">All Equipments</string>
+    <string name="allMuscles">All muscles</string>
+    <string name="allUnitTypes">All types</string>
+</resources>

@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -18,13 +19,35 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Shared"
-            isStatic = true
+            isStatic = false
+
+            export(libs.mokoMvvm.core)
+            export(libs.mokoMvvm.flow)
+            export(libs.mokoMvvm.flow.swiftui)
+
+            export(libs.mokoResources.resources)
+            export(libs.mokoResources.graphics)
         }
     }
     
     sourceSets {
         commonMain.dependencies {
-            // put your Multiplatform dependencies here
+            api(libs.kotlinx.coroutines.core)
+            api(libs.mokoMvvm.core)
+            api(libs.mokoMvvm.flow)
+
+            api(libs.mokoResources.resources)
+            api(libs.mokoResources.resources.compose)
+        }
+        androidMain.dependencies {
+            api(libs.mokoMvvm.core)
+            api(libs.mokoMvvm.flow)
+            api(libs.mokoMvvm.flow.compose)
+        }
+        iosMain.dependencies {
+            api(libs.mokoMvvm.core)
+            api(libs.mokoMvvm.flow)
+            api(libs.mokoMvvm.flow.swiftui)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -42,4 +65,8 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+}
+
+multiplatformResources {
+    resourcesPackage.set("app.xl.sportappkmp")
 }
