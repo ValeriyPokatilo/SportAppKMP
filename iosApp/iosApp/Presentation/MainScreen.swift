@@ -1,5 +1,5 @@
 //
-//  TabBarScreen.swift
+//  MainScreen.swift
 //  iosApp
 //
 //  Created by Valeriy P on 28.12.2025.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Shared
 
-struct TabBarScreen: View {
+struct MainScreen: View {
 
     enum TabItem {
         case workouts, exercises, info
@@ -38,5 +38,5 @@ struct TabBarScreen: View {
 }
 
 #Preview {
-    TabBarScreen()
+    MainScreen()
 }

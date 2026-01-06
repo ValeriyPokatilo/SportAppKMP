@@ -23,6 +23,7 @@ struct ExercisesFilterBarButton: View {
                 .truncationMode(.tail)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 4)
+                .padding(.horizontal, 6)
                 .background(Color(MR.colors().baseGreen.getUIColor()))
                 .foregroundStyle(.white)
                 .cornerRadius(8)

@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ExercisesScreen: View {
 
-    @ObservedObject var viewModel = ExercisesScreenViewModel()
+    @StateObject var viewModel = ExercisesScreenViewModel()
+    @State private var selectedExerciseId: String?
     
     private let localizer = Localizer()
     
@@ -71,6 +72,7 @@ struct ExercisesScreen: View {
                         }
                     }
                 }
+                .background(.white)
                 .padding(.horizontal, 20)
                 
                 Spacer()
@@ -102,19 +104,36 @@ struct ExercisesScreen: View {
                 Divider()
                     .padding(.horizontal, 20)
                 
-                List(screenState.exercises, id: \.id) { exercise in
-                    ExerciseListRow(exercise: exercise)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
-                        .id(exercise.id)
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        ForEach(screenState.exercises, id: \.id) { exercise in
+                            ExerciseListRow(exercise: exercise)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 20)
+                                .cornerRadius(8)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    selectedExerciseId = exercise.id
+                                }
+
+                            Divider()
+                                .padding(.horizontal, 20)
+                        }
+                    }
                 }
-                .listStyle(.plain)
-                .background(.clear)
-                .scrollContentBackground(.hidden)
             }
+            .background(Color(MR.colors().baseGray.getUIColor()))
             .navigationTitle(
                 localizer.get(id: MR.strings().exercisesTabTitle)
             )
+            .navigationDestination(
+                item: $selectedExerciseId
+            ) { exerciseId in
+                ExercisesInfoScreen(exerciseId: exerciseId)
+            }
+            .toolbarBackground(Color(MR.colors().baseGray.getUIColor()), for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
             .sheet(item: activeSheetBinding) { sheet in
                 switch sheet {

@@ -19,12 +19,13 @@ struct ExerciseListRow: View {
             Text(exercise.localizedTitle)
                 .font(.system(size: 18, weight: .bold))
             
-            HStack(alignment: .top, spacing: 8) {
+            HStack(alignment: .top, spacing: 12) {
                 Image(uiImage: ResourcesKt.getImageByFileName(name: exercise.iconName).toUIImage() ?? UIImage())
                     .resizable()
                     .scaledToFill()
                     .frame(width: 52, height: 52)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .shadow(color: .black.opacity(0.25), radius: 8, x: 6, y: 6)
                     .overlay {
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(Color.gray, style: StrokeStyle(lineWidth: 1))
@@ -39,7 +40,7 @@ struct ExerciseListRow: View {
                     .font(.system(size: 12))
                     
                     Text(
-                        exercise.equipment
+                        exercise.equipments
                             .map { localizer.get(id: $0.titleRes) }
                             .joined(separator: ", ")
                     )
@@ -50,5 +51,7 @@ struct ExerciseListRow: View {
                 }
             }
         }
+        .padding(.vertical, 8)
+        .background(Color(MR.colors().baseGray.getUIColor()))
     }
 }
