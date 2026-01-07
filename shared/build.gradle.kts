@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     id("dev.icerock.mobile.multiplatform-resources")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -38,6 +39,8 @@ kotlin {
 
             api(libs.mokoResources.resources)
             api(libs.mokoResources.resources.compose)
+
+            implementation(libs.kotlinx.serialization.json)
         }
         androidMain.dependencies {
             api(libs.mokoMvvm.core)
