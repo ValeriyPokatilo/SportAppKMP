@@ -52,12 +52,10 @@ fun ExercisesScreen(
     val context = LocalContext.current
     val localizer = Localizer(context)
 
-
     Column(
         modifier = modifier
             .fillMaxSize()
             .statusBarsPadding()
-            .background(Color(MR.colors.baseGray.getColor(context)))
     ) {
         SearchBar(
             modifier = Modifier.padding(horizontal = 24.dp),
