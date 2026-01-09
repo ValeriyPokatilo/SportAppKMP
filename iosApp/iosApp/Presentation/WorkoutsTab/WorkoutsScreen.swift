@@ -10,7 +10,9 @@ import SwiftUI
 
 struct WorkoutsScreen: View {
 
-    @StateObject private var viewModel = WorkoutsScreenViewModel()
+    @StateObject private var viewModel = WorkoutsScreenViewModel(
+        fileManager: Shared.FileManager()
+    )
 
     private var workouts: [WorkoutUI] {
         viewModel.state(
@@ -29,16 +31,16 @@ struct WorkoutsScreen: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                VStack(spacing: 16) {
-                    ForEach(workouts, id: \.id) { workoutUi in
-                        WorkoutListRow(workoutUi: workoutUi)
-                            .padding(.horizontal, 20)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    VStack(spacing: 16) {
+                        ForEach(workouts, id: \.id) { workoutUi in
+                            WorkoutListRow(workoutUi: workoutUi)
+                                .padding(.horizontal, 20)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
                 }
-                
-                Spacer()
             }
             .navigationTitle(Localizer().get(id: MR.strings().workoutsTabTitle))
             .navigationBarTitleDisplayMode(.inline)
