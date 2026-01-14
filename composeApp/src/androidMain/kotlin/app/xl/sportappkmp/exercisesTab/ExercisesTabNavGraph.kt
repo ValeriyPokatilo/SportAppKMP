@@ -1,6 +1,7 @@
 package app.xl.sportappkmp.exercisesTab
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -15,7 +16,9 @@ sealed class Screen(val route: String) {
 }
 
 @Composable
-fun ExercisesTabNavGraph() {
+fun ExercisesTabNavGraph(
+    modifier: Modifier = Modifier
+) {
 
     val navController = rememberNavController()
 
@@ -26,6 +29,7 @@ fun ExercisesTabNavGraph() {
 
         composable(Screen.ExerciseList.route) {
             ExercisesScreen(
+                modifier = modifier,
                 onExerciseClick = { id ->
                     navController.navigate(Screen.ExerciseInfo.createRoute(id))
                 }

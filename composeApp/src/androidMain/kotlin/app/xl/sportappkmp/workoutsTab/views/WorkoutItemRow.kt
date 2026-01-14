@@ -24,7 +24,7 @@ fun WorkoutItemRow(
     ) {
         Text(
             text = workoutUi.title,
-            fontSize = 20.sp,
+            fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
             maxLines = 1,
             softWrap = false,
@@ -35,7 +35,7 @@ fun WorkoutItemRow(
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = workoutUi.exerciseTitles,
-            fontSize = 14.sp,
+            fontSize = 16.sp,
             color = Color.Gray
         )
     }

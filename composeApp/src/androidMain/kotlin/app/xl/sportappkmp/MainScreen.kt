@@ -101,10 +101,10 @@ fun MainScreen() {
             .padding(top = innerPadding.calculateTopPadding())
         when (selectedDestination) {
             BottomBarDestination.WORKOUTS -> {
-                WorkoutsTabNavGraph()
+                WorkoutsTabNavGraph(modifier = paddingModifier)
             }
             BottomBarDestination.EXERCISES-> {
-                ExercisesTabNavGraph()
+                ExercisesTabNavGraph(modifier = paddingModifier)
             }
             BottomBarDestination.INFO -> {
                 InfoScreen(modifier = paddingModifier)

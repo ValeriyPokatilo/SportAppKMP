@@ -6,5 +6,5 @@ data class WorkoutUI(
     val exercises: List<Exercise>
 ) {
     val exerciseTitles: String
-        get() = exercises.joinToString(" • ") { it.localizedTitle }
+        get() = exercises.joinToString(", ") { it.localizedTitle }
 }

@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.sp
 fun ExerciseListRowText(text: String) {
     Text(
         text = text,
-        fontSize = 18.sp,
+        fontSize = 16.sp,
         color = Color.DarkGray
     )
 }

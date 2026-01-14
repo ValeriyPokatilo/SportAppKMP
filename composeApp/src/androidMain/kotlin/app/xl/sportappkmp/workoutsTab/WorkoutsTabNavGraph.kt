@@ -1,8 +1,8 @@
 package app.xl.sportappkmp.workoutsTab
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavHost
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -17,7 +17,9 @@ sealed class Screen(val route: String) {
 }
 
 @Composable
-fun WorkoutsTabNavGraph() {
+fun WorkoutsTabNavGraph(
+    modifier: Modifier = Modifier
+) {
 
     val context = LocalContext.current.applicationContext // TODO: - ???
 
@@ -28,7 +30,10 @@ fun WorkoutsTabNavGraph() {
         startDestination = Screen.WorkoutList.route
     ) {
         composable(Screen.WorkoutList.route) {
-            WorkoutsScreen(context = context)
+            WorkoutsScreen(
+                modifier = modifier,
+                context = context
+            )
         }
     }
 }

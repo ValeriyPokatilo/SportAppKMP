@@ -42,7 +42,7 @@ fun ExerciseListRow(
     ) {
         Text(
             text = exercise.localizedTitle,
-            fontSize = 24.sp,
+            fontSize = 22.sp,
             fontWeight = FontWeight.Bold
         )
 
