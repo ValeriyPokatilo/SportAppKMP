@@ -24,10 +24,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import app.xl.sportappkmp.exercisesTab.ExerciseTabNavGraph
+import app.xl.sportappkmp.exercisesTab.ExercisesTabNavGraph
 import app.xl.sportappkmp.infoTab.InfoScreen
 import app.xl.sportappkmp.utils.localizer
-import app.xl.sportappkmp.workoutsTab.WorkoutsScreen
+import app.xl.sportappkmp.workoutsTab.WorkoutsTabNavGraph
 
 @Composable
 fun MainScreen() {
@@ -101,10 +101,10 @@ fun MainScreen() {
             .padding(top = innerPadding.calculateTopPadding())
         when (selectedDestination) {
             BottomBarDestination.WORKOUTS -> {
-                WorkoutsScreen(modifier = paddingModifier, context)
+                WorkoutsTabNavGraph()
             }
             BottomBarDestination.EXERCISES-> {
-                ExerciseTabNavGraph()
+                ExercisesTabNavGraph()
             }
             BottomBarDestination.INFO -> {
                 InfoScreen(modifier = paddingModifier)

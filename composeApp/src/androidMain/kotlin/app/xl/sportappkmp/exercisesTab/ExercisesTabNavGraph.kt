@@ -6,7 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 sealed class Screen(val route: String) {
-    data object ExerciseList: Screen("exercises_list")
+    data object ExerciseList: Screen("exercise_list")
     data object ExerciseInfo: Screen("exercise_info/{exercise_id}") {
         fun createRoute(id: String): String {
             return "exercise_info/${id}"
@@ -15,7 +15,7 @@ sealed class Screen(val route: String) {
 }
 
 @Composable
-fun ExerciseTabNavGraph() {
+fun ExercisesTabNavGraph() {
 
     val navController = rememberNavController()
 
