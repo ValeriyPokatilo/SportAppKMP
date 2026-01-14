@@ -22,7 +22,9 @@ fun WorkoutsScreen(
     context: Context,
     viewModel: WorkoutsScreenViewModel = viewModel {
         WorkoutsScreenViewModel(fileManager = FileManager(context))
-    }
+    },
+    onAddWorkoutClick: (String) -> Unit,
+    onStartWorkoutClick: (String) -> Unit,
 ) {
 
     val workouts by viewModel.workouts.collectAsStateWithLifecycle()
@@ -38,7 +40,8 @@ fun WorkoutsScreen(
         ) { index, workoutUi ->
             WorkoutItemRow(
                 modifier =  Modifier.padding(horizontal = 24.dp),
-                workoutUi = workoutUi
+                workoutUi = workoutUi,
+                onClick = onStartWorkoutClick
             )
         }
     }

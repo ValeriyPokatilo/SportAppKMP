@@ -1,5 +1,6 @@
 package app.xl.sportappkmp.workoutsTab.views
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,10 +17,15 @@ import app.xl.sportappkmp.models.WorkoutUI
 @Composable
 fun WorkoutItemRow(
     modifier: Modifier = Modifier,
-    workoutUi: WorkoutUI
+    workoutUi: WorkoutUI,
+    onClick: (String) -> Unit
 ) {
     Column(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable {
+                onClick(workoutUi.id)
+            },
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(

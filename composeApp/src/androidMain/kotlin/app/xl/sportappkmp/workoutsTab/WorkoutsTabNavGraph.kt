@@ -9,9 +9,14 @@ import androidx.navigation.compose.rememberNavController
 
 sealed class Screen(val route: String) {
     data object WorkoutList: Screen("workout_list")
-    data object WorkoutCreate: Screen("workout_create/{workout_id}") {
+    data object EditWorkout: Screen("edit_workout/{workout_id}") {
         fun createRoute(id: String): String {
-            return "workout_create/${id}"
+            return "edit_workout/${id}"
+        }
+    }
+    data object ActiveWorkout: Screen("active_workout/{workout_id}") {
+        fun createRoute(id: String): String {
+            return "active_workout/${id}"
         }
     }
 }
@@ -32,7 +37,35 @@ fun WorkoutsTabNavGraph(
         composable(Screen.WorkoutList.route) {
             WorkoutsScreen(
                 modifier = modifier,
-                context = context
+                context = context,
+                onAddWorkoutClick = { id ->
+                    navController.navigate(Screen.EditWorkout.createRoute(id))
+                },
+                onStartWorkoutClick = { id ->
+                    navController.navigate(Screen.ActiveWorkout.createRoute(id))
+                }
+            )
+        }
+
+        composable(Screen.EditWorkout.route) { navBackStackEntry ->
+            val id = navBackStackEntry.arguments?.getString("workout_id")
+
+            EditWorkoutScreen(
+                workoutId = id,
+                onFinished = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(Screen.ActiveWorkout.route) { navBackStackEntry ->
+            val id = navBackStackEntry.arguments?.getString("workout_id") ?: ""
+
+            ActiveWorkoutScreen(
+                workoutId = id,
+                onFinished = {
+                    navController.popBackStack()
+                }
             )
         }
     }
