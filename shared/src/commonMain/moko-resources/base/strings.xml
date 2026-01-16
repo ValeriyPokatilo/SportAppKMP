@@ -44,4 +44,9 @@
     <string name="allEquipment">All Equipments</string>
     <string name="allMuscles">All muscles</string>
     <string name="allUnitTypes">All types</string>
+    <!-- Workout details -->
+    <string name="workoutNameStr">Workout Title:</string> // Название тренировки:
+    <string name="newWorkoutStr">New Workout</string> // Новая тренировка
+    <string name="addExerciseStr">Add Exercise</string> // Добавить упражнение
+    <string name="emptyExercisesStr">Please add at least one exercise to save</string> // Добавьте хотя бы одно упражнение, чтобы сохранить
 </resources>
