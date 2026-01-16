@@ -13,6 +13,9 @@ struct WorkoutsScreen: View {
     @StateObject private var viewModel = WorkoutsScreenViewModel(
         fileManager: Shared.FileManager()
     )
+    @State private var isEditWorkoutPresented = false
+    @State private var isActiveWorkoutPresented = false
+    @State private var selectedWorkoutId: String?
 
     private var workouts: [WorkoutUI] {
         viewModel.state(
@@ -38,12 +41,37 @@ struct WorkoutsScreen: View {
                             WorkoutListRow(workoutUi: workoutUi)
                                 .padding(.horizontal, 20)
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .onTapGesture {
+                                    selectedWorkoutId = workoutUi.id
+                                    isActiveWorkoutPresented = true
+                                }
                         }
                     }
                 }
             }
             .navigationTitle(Localizer().get(id: MR.strings().workoutsTabTitle))
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isEditWorkoutPresented = true
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .navigationDestination(
+                isPresented: $isEditWorkoutPresented
+            ) {
+                EditWorkoutScreen(id: selectedWorkoutId)
+            }
+            .navigationDestination(
+                isPresented: $isActiveWorkoutPresented
+            ) {
+                if let id = selectedWorkoutId {
+                    ActiveWorkoutScreen(id: id)
+                }
+            }
             .background(Color(MR.colors().baseGray.getUIColor()))
         }
     }
