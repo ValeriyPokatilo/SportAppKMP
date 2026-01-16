@@ -1,8 +1,10 @@
 package app.xl.sportappkmp.workoutsTab
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -10,7 +12,7 @@ import androidx.navigation.compose.rememberNavController
 sealed class Screen(val route: String) {
     data object WorkoutList: Screen("workout_list")
     data object EditWorkout: Screen("edit_workout/{workout_id}") {
-        fun createRoute(id: String): String {
+        fun createRoute(id: String?): String {
             return "edit_workout/${id}"
         }
     }
@@ -23,7 +25,8 @@ sealed class Screen(val route: String) {
 
 @Composable
 fun WorkoutsTabNavGraph(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onFabActionChanged: ((() -> Unit)?) -> Unit
 ) {
 
     val context = LocalContext.current.applicationContext // TODO: - ???
@@ -35,6 +38,14 @@ fun WorkoutsTabNavGraph(
         startDestination = Screen.WorkoutList.route
     ) {
         composable(Screen.WorkoutList.route) {
+            LaunchedEffect(Unit) {
+                onFabActionChanged {
+                    navController.navigate(
+                        Screen.EditWorkout.createRoute(null)
+                    )
+                }
+            }
+
             WorkoutsScreen(
                 modifier = modifier,
                 context = context,
@@ -48,6 +59,10 @@ fun WorkoutsTabNavGraph(
         }
 
         composable(Screen.EditWorkout.route) { navBackStackEntry ->
+            LaunchedEffect(Unit) {
+                onFabActionChanged(null)
+            }
+
             val id = navBackStackEntry.arguments?.getString("workout_id")
 
             EditWorkoutScreen(
@@ -59,6 +74,10 @@ fun WorkoutsTabNavGraph(
         }
 
         composable(Screen.ActiveWorkout.route) { navBackStackEntry ->
+            LaunchedEffect(Unit) {
+                onFabActionChanged(null)
+            }
+
             val id = navBackStackEntry.arguments?.getString("workout_id") ?: ""
 
             ActiveWorkoutScreen(

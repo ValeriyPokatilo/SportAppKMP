@@ -18,12 +18,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import app.xl.sportappkmp.commonViews.FloatingGreenButton
 import app.xl.sportappkmp.exercisesTab.ExercisesTabNavGraph
 import app.xl.sportappkmp.infoTab.InfoScreen
 import app.xl.sportappkmp.utils.localizer
@@ -64,9 +66,28 @@ fun MainScreen() {
 
     val context = LocalContext.current.applicationContext
 
+    var fabAction by remember {
+        mutableStateOf<(() -> Unit)?>(null)
+    }
+
     Scaffold(
         contentWindowInsets = WindowInsets.systemBars,
         containerColor = Color(MR.colors.baseGray.getColor(context)),
+        floatingActionButton = {
+            when (selectedDestination) {
+                BottomBarDestination.WORKOUTS -> {
+                    fabAction?.let {
+                        FloatingGreenButton(onClick = it)
+                    }
+                }
+                BottomBarDestination.EXERCISES -> {
+                    fabAction?.let {
+                        FloatingGreenButton(onClick = it)
+                    }
+                }
+                BottomBarDestination.INFO -> {}
+            }
+        },
         bottomBar = {
             NavigationBar {
                 items.forEach { item ->
@@ -101,10 +122,16 @@ fun MainScreen() {
             .padding(top = innerPadding.calculateTopPadding())
         when (selectedDestination) {
             BottomBarDestination.WORKOUTS -> {
-                WorkoutsTabNavGraph(modifier = paddingModifier)
+                WorkoutsTabNavGraph(
+                    modifier = paddingModifier,
+                    onFabActionChanged = { fabAction = it }
+                )
             }
             BottomBarDestination.EXERCISES-> {
-                ExercisesTabNavGraph(modifier = paddingModifier)
+                ExercisesTabNavGraph(
+                    modifier = paddingModifier,
+                    onFabActionChanged = { fabAction = it }
+                )
             }
             BottomBarDestination.INFO -> {
                 InfoScreen(modifier = paddingModifier)
