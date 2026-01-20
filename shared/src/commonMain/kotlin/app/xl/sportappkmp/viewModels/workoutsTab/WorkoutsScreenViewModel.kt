@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.stateIn
 class WorkoutsScreenViewModel(
     fileManager: FileManager
 ): ViewModel() {
-    private val workoutsRepository: WorkoutsRepository = WorkoutsRepositoryImpl(fileManager)
+    private val workoutsRepository: WorkoutsRepository = WorkoutsRepositoryImpl.getInstance(fileManager)
     private val exercisesRepository: ExercisesRepository = ExercisesRepositoryImpl
 
     val workouts: CStateFlow<List<WorkoutUI>> =
