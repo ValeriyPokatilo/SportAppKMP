@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -19,7 +20,7 @@ import app.xl.sportappkmp.workoutsTab.views.WorkoutItemRow
 @Composable
 fun WorkoutsScreen(
     modifier: Modifier = Modifier,
-    context: Context,
+    context: Context = LocalContext.current.applicationContext,
     viewModel: WorkoutsScreenViewModel = viewModel {
         WorkoutsScreenViewModel(fileManager = FileManager(context))
     },
@@ -36,7 +37,7 @@ fun WorkoutsScreen(
     ) {
         itemsIndexed(
             items = workouts,
-            key = { _, workoutUi -> workoutUi.title }
+            key = { _, workoutUi -> workoutUi.id }
         ) { index, workoutUi ->
             WorkoutItemRow(
                 modifier =  Modifier.padding(horizontal = 24.dp),

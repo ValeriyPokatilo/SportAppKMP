@@ -3,8 +3,6 @@ package app.xl.sportappkmp.workoutsTab
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -29,8 +27,6 @@ fun WorkoutsTabNavGraph(
     onFabActionChanged: ((() -> Unit)?) -> Unit
 ) {
 
-    val context = LocalContext.current.applicationContext // TODO: - ???
-
     val navController = rememberNavController()
 
     NavHost(
@@ -48,7 +44,6 @@ fun WorkoutsTabNavGraph(
 
             WorkoutsScreen(
                 modifier = modifier,
-                context = context,
                 onAddWorkoutClick = { id ->
                     navController.navigate(Screen.EditWorkout.createRoute(id))
                 },
@@ -64,7 +59,6 @@ fun WorkoutsTabNavGraph(
             }
 
             val id = navBackStackEntry.arguments?.getString("workout_id")
-
             EditWorkoutScreen(
                 workoutId = id,
                 onFinished = {
@@ -82,6 +76,9 @@ fun WorkoutsTabNavGraph(
 
             ActiveWorkoutScreen(
                 workoutId = id,
+                onEdit = {
+                    navController.navigate(Screen.EditWorkout.createRoute(id))
+                },
                 onFinished = {
                     navController.popBackStack()
                 }
