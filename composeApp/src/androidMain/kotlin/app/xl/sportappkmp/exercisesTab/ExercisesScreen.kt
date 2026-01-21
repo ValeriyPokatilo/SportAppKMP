@@ -22,10 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.xl.sportappkmp.MR
+import app.xl.sportappkmp.exercisesTab.views.EnumPickerSheet
 import app.xl.sportappkmp.exercisesTab.views.ExerciseListRow
 import app.xl.sportappkmp.exercisesTab.views.FilterBar
 import app.xl.sportappkmp.exercisesTab.views.SearchBar
-import app.xl.sportappkmp.exercisesTab.views.EnumPickerSheet
 import app.xl.sportappkmp.models.Equipment
 import app.xl.sportappkmp.models.FilterSheetType
 import app.xl.sportappkmp.models.MuscleGroup
