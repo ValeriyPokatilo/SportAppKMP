@@ -8,7 +8,7 @@ class FirstLaunchManager(private val settings: Settings) {
         private const val KEY_FIRST_LAUNCH = "is_first_launch"
     }
 
-    fun getAndCheckFirstLaunch(): Boolean {
+    fun checkFirstLaunch(): Boolean {
         val isFirst = settings.getBoolean(KEY_FIRST_LAUNCH, true)
         if (isFirst) {
             settings.putBoolean(KEY_FIRST_LAUNCH, false)
