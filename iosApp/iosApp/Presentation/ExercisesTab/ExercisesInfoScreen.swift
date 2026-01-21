@@ -31,14 +31,7 @@ struct ExercisesInfoScreen: View {
     var body: some View {
         switch screenState {
         case is InfoScreenStateInitial:
-            VStack {
-                Spacer()
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: Color(MR.colors().baseGreen.getUIColor())))
-                Spacer()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(MR.colors().baseGray.getUIColor()))
+            Loader()
         case let state as InfoScreenStateInfo:
             VStack {
                 VStack(spacing: 24) {

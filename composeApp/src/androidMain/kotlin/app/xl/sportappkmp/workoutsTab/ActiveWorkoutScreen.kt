@@ -2,16 +2,18 @@
 
 package app.xl.sportappkmp.workoutsTab
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.outlined.EditNote
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -19,29 +21,49 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import app.xl.sportappkmp.MR
+import app.xl.sportappkmp.commonViews.Loader
+import app.xl.sportappkmp.data.FileManager
+import app.xl.sportappkmp.exercisesTab.views.ExerciseListRow
+import app.xl.sportappkmp.utils.Localizer
+import app.xl.sportappkmp.viewModels.workoutsTab.ActiveWorkoutScreenViewModel
+import app.xl.sportappkmp.viewModels.workoutsTab.ActiveWorkoutState
 
 @Composable
 fun ActiveWorkoutScreen(
     modifier: Modifier = Modifier,
     workoutId: String,
+    context: Context = LocalContext.current.applicationContext,
+    viewModel: ActiveWorkoutScreenViewModel = viewModel {
+        ActiveWorkoutScreenViewModel(workoutId, FileManager(context))
+    },
+    onEdit: () -> Unit,
     onFinished: () -> Unit
 ) {
 
-    val context = LocalContext.current
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val localizer = Localizer(context)
+
+    val title = when (val currentState = state) {
+        is ActiveWorkoutState.Ready -> currentState.workout.title
+        ActiveWorkoutState.Initial -> ""
+    }
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Text(
-                        text = "Active workout", // TODO: -
+                        text = title,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.DarkGray
@@ -62,20 +84,51 @@ fun ActiveWorkoutScreen(
                         contentDescription = "Back button"
                     )
                 },
+                actions = {
+                    Icon(
+                        modifier = Modifier
+                            .padding(end = 16.dp)
+                            .clickable {
+                                onEdit()
+                            },
+                        imageVector = Icons.Outlined.EditNote,
+                        contentDescription = "Edit note"
+                    )
+                }
             )
         }
     ) { innerPadding ->
-        Box(modifier = modifier
-            .fillMaxSize()
-            .padding(innerPadding)
-            .background(Color(MR.colors.baseGray.getColor(context)))
-        ) {
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp),
-                text = workoutId
-            )
+        when (state) {
+            ActiveWorkoutState.Initial -> {
+                Loader(context)
+            }
+            is ActiveWorkoutState.Ready -> {
+                val exercises = (state as ActiveWorkoutState.Ready).exercises
+
+                Column(
+                    modifier = modifier
+                        .fillMaxSize()
+                        .padding(top = innerPadding.calculateTopPadding())
+                        .background(Color(MR.colors.baseGray.getColor(context)))
+                ) {
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        contentPadding = PaddingValues(horizontal = 24.dp)
+                    ) {
+                        itemsIndexed(
+                            items = exercises,
+                            key = { _, exercise -> exercise.id }
+                        ) { index, exercise ->
+                            ExerciseListRow(
+                                localizer = localizer,
+                                exercise = exercise,
+                                onClick = {}
+                            )
+                        }
+                    }
+                }
+            }
+            // TODO: - incorrect bottom padding
         }
     }
 }
