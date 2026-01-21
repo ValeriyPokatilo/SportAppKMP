@@ -41,6 +41,9 @@ kotlin {
             api(libs.mokoResources.resources.compose)
 
             implementation(libs.kotlinx.serialization.json)
+
+            api(libs.multiplatform.settings)
+            implementation(libs.multiplatform.settings.no.arg)
         }
         androidMain.dependencies {
             api(libs.mokoMvvm.core)
