@@ -5,8 +5,11 @@
 - **Kotlin Multiplatform (KMP)**
 - **Kotlin / Swift**
 - **Jetpack Compose (Android) / SwiftUI (iOS)**
-- **moko-mvvm** (общая ViewModel)
-- **moko-resources** (для локализации и ресурсов)
+- **Navigation Compose**
+- **moko-mvvm**
+- **moko-resources**
+- **kotlinx.serialization**
+- **multiplatform.settings**
 
 ## Сборка проекта
 
