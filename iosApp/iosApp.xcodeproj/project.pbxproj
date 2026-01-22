@@ -23,6 +23,9 @@
 		7670F3A72F096EA300C96A69 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3A22F096EA300C96A69 /* ViewModelState.swift */; };
 		7670F3A82F096EA300C96A69 /* ViewModelStateNullable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3A32F096EA300C96A69 /* ViewModelStateNullable.swift */; };
 		7670F3A92F096EA300C96A69 /* CFlowExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F39E2F096EA300C96A69 /* CFlowExt.swift */; };
+		768386CC2F224C7000100F04 /* WorkoutsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768386CB2F224C7000100F04 /* WorkoutsRoute.swift */; };
+		768386CE2F22507B00100F04 /* ExercisesRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768386CD2F22507B00100F04 /* ExercisesRoute.swift */; };
+		768386D02F22537900100F04 /* ExerciseCreateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768386CF2F22537900100F04 /* ExerciseCreateScreen.swift */; };
 		76951C8E2F07C140003311F2 /* ExerciseListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76951C8D2F07C140003311F2 /* ExerciseListRow.swift */; };
 		769B30062F20A7D200EED76A /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769B30052F20A7D200EED76A /* Loader.swift */; };
 		76CAF19E2F1821F40037809B /* EditWorkoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAF19D2F1821F40037809B /* EditWorkoutScreen.swift */; };
@@ -54,6 +57,9 @@
 		7670F3A12F096EA300C96A69 /* ViewModelObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelObservable.swift; sourceTree = "<group>"; };
 		7670F3A22F096EA300C96A69 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
 		7670F3A32F096EA300C96A69 /* ViewModelStateNullable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelStateNullable.swift; sourceTree = "<group>"; };
+		768386CB2F224C7000100F04 /* WorkoutsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsRoute.swift; sourceTree = "<group>"; };
+		768386CD2F22507B00100F04 /* ExercisesRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesRoute.swift; sourceTree = "<group>"; };
+		768386CF2F22537900100F04 /* ExerciseCreateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCreateScreen.swift; sourceTree = "<group>"; };
 		76951C8D2F07C140003311F2 /* ExerciseListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListRow.swift; sourceTree = "<group>"; };
 		769B30052F20A7D200EED76A /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		76CAF19D2F1821F40037809B /* EditWorkoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkoutScreen.swift; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 				7654E55D2F019E89003E0465 /* App */,
 				7654E5562F019E77003E0465 /* iOSApp.swift */,
 				7654E5602F019F2E003E0465 /* Presentation */,
+				768386CA2F224C5C00100F04 /* Models */,
 				7670F38F2F0969C800C96A69 /* Extensions */,
 				7654E56A2F01C129003E0465 /* Utils */,
 				7654E5522F019E77003E0465 /* Preview Content */,
@@ -141,6 +148,7 @@
 			children = (
 				7654E5662F01A022003E0465 /* ExercisesScreen.swift */,
 				76D545B52F0C410500A60D79 /* ExercisesInfoScreen.swift */,
+				768386CF2F22537900100F04 /* ExerciseCreateScreen.swift */,
 				76951C8C2F07C0FD003311F2 /* ExercisesScreenViews */,
 			);
 			path = ExercisesTab;
@@ -181,6 +189,15 @@
 				7670F3A32F096EA300C96A69 /* ViewModelStateNullable.swift */,
 			);
 			path = mokoMvvmFlowSwiftUI;
+			sourceTree = "<group>";
+		};
+		768386CA2F224C5C00100F04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				768386CB2F224C7000100F04 /* WorkoutsRoute.swift */,
+				768386CD2F22507B00100F04 /* ExercisesRoute.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		76951C8C2F07C0FD003311F2 /* ExercisesScreenViews */ = {
@@ -326,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76D29FE22F0D0EE100BFF395 /* InfoDetailsBlock.swift in Sources */,
+				768386CE2F22507B00100F04 /* ExercisesRoute.swift in Sources */,
 				7654E5592F019E77003E0465 /* iOSApp.swift in Sources */,
 				7654E5652F01A004003E0465 /* WorkoutsScreen.swift in Sources */,
 				7654E55F2F019EC3003E0465 /* MainScreen.swift in Sources */,
@@ -339,7 +357,9 @@
 				7670F3A62F096EA300C96A69 /* ViewModelBinding.swift in Sources */,
 				76CAF1A02F182F160037809B /* ActiveWorkoutScreen.swift in Sources */,
 				7670F3A72F096EA300C96A69 /* ViewModelState.swift in Sources */,
+				768386D02F22537900100F04 /* ExerciseCreateScreen.swift in Sources */,
 				7670F3A82F096EA300C96A69 /* ViewModelStateNullable.swift in Sources */,
+				768386CC2F224C7000100F04 /* WorkoutsRoute.swift in Sources */,
 				76D29FE52F0E5AA800BFF395 /* WorkoutListRow.swift in Sources */,
 				76CAF1A32F18A2F40037809B /* AddButton.swift in Sources */,
 				76D545B62F0C410500A60D79 /* ExercisesInfoScreen.swift in Sources */,

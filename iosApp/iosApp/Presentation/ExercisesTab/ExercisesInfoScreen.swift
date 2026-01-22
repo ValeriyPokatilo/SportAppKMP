@@ -11,8 +11,12 @@ import Shared
 struct ExercisesInfoScreen: View {
     
     @StateObject var viewModel: ExerciseInfoScreenViewModel
+    @Binding var path: NavigationPath
+    private let exerciseId: String
 
-    init(exerciseId: String) {
+    init(path: Binding<NavigationPath>, exerciseId: String) {
+        self.exerciseId = exerciseId
+        self._path = path
         _viewModel = StateObject(
             wrappedValue: ExerciseInfoScreenViewModel(exerciseId: exerciseId)
         )
@@ -65,14 +69,19 @@ struct ExercisesInfoScreen: View {
             }
             .background(Color(MR.colors().baseGray.getUIColor()))
             .navigationTitle(state.exercise.localizedTitle)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        path.append(ExercisesRoute.edit(exerciseId))
+                    }) {
+                        Image(systemName: "pencil.circle")
+                    }
+                }
+            }
         case is InfoScreenStateGoBack:
             EmptyView()
         default:
             EmptyView()
         }
     }
-}
-
-#Preview {
-    ExercisesInfoScreen(exerciseId: "B1E43C34-8F16-4E36-A8D6-2CC951950C1F")
 }

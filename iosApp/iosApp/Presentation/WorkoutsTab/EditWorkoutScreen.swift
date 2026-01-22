@@ -9,18 +9,18 @@ import Shared
 import SwiftUI
 
 struct EditWorkoutScreen: View {
-    
+
     @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel: EditWorkoutScreenViewModel
-    
+
     private var screenState: WorkoutInfoState {
         viewModel.state(
             \.state,
-             equals: { _, _ in false },
-             mapper: { $0 }
+            equals: { _, _ in false },
+            mapper: { $0 }
         )
     }
-    
+
     private var titleBinding: Binding<String> {
         Binding(
             get: { screenState.title },
@@ -40,7 +40,7 @@ struct EditWorkoutScreen: View {
     }
 
     var body: some View {
-        NavigationStack {
+        ScrollView {
             ZStack {
                 AddButton(onTap: {})
                 VStack(alignment: .leading) {
@@ -63,7 +63,9 @@ struct EditWorkoutScreen: View {
                                 HStack {
                                     Spacer()
                                     Button {
-                                        viewModel.onDeleteExercise(exerciseId: exercise.id)
+                                        viewModel.onDeleteExercise(
+                                            exerciseId: exercise.id
+                                        )
                                     } label: {
                                         Image(systemName: "trash")
                                             .font(.system(size: 18, weight: .bold))
@@ -79,15 +81,15 @@ struct EditWorkoutScreen: View {
                     }
                     Spacer()
                 }
-                .padding(.horizontal, 20)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            viewModel.onSaveClicked()
-                            dismiss()
-                        } label: {
-                            Text("💾")
-                        }
+            }
+            .padding(.horizontal, 20)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        viewModel.onSaveClicked()
+                        dismiss()
+                    } label: {
+                        Text("💾")
                     }
                 }
             }

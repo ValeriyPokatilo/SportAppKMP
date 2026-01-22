@@ -11,7 +11,7 @@ import SwiftUI
 struct ExercisesScreen: View {
 
     @StateObject var viewModel = ExercisesScreenViewModel()
-    @State private var selectedExerciseId: String?
+    @State private var path = NavigationPath()
     
     private let localizer = Localizer()
     
@@ -47,7 +47,7 @@ struct ExercisesScreen: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack(spacing: 0) {
                 TextField(
                     localizer.get(id: MR.strings().searchBarPlaceholder),
@@ -107,18 +107,18 @@ struct ExercisesScreen: View {
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 0) {
                         ForEach(screenState.exercises, id: \.id) { exercise in
-                            ExerciseListRow(exercise: exercise)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 20)
-                                .cornerRadius(8)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    selectedExerciseId = exercise.id
-                                }
-
-                            Divider()
-                                .padding(.horizontal, 20)
+                            NavigationLink(value: ExercisesRoute.detail(exercise.id)) {
+                                ExerciseListRow(exercise: exercise)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 20)
+                                    .cornerRadius(8)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .contentShape(Rectangle())
+                                
+                                Divider()
+                                    .padding(.horizontal, 20)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                 }
@@ -127,10 +127,24 @@ struct ExercisesScreen: View {
             .navigationTitle(
                 localizer.get(id: MR.strings().exercisesTabTitle)
             )
-            .navigationDestination(
-                item: $selectedExerciseId
-            ) { exerciseId in
-                ExercisesInfoScreen(exerciseId: exerciseId)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        path.append(ExercisesRoute.create)
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .navigationDestination(for: ExercisesRoute.self) { route in
+                switch route {
+                case .detail(let id):
+                    ExercisesInfoScreen(path: $path, exerciseId: id)
+                case .edit(let id):
+                    ExerciseCreateScreen(id: id)
+                case .create:
+                    ExerciseCreateScreen(id: nil)
+                }
             }
             .toolbarBackground(Color(MR.colors().baseGray.getUIColor()), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)

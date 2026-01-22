@@ -13,9 +13,8 @@ struct WorkoutsScreen: View {
     @StateObject private var viewModel = WorkoutsScreenViewModel(
         fileManager: Shared.FileManager()
     )
-    @State private var isEditWorkoutPresented = false
-    @State private var isActiveWorkoutPresented = false
-    @State private var selectedWorkoutId: String?
+    
+    @State private var path = NavigationPath()
 
     private var workouts: [WorkoutUI] {
         viewModel.state(
@@ -33,18 +32,17 @@ struct WorkoutsScreen: View {
     }
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     VStack(spacing: 16) {
                         ForEach(workouts, id: \.id) { workoutUi in
-                            WorkoutListRow(workoutUi: workoutUi)
-                                .padding(.horizontal, 20)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .onTapGesture {
-                                    selectedWorkoutId = workoutUi.id
-                                    isActiveWorkoutPresented = true
-                                }
+                            NavigationLink(value: WorkoutsRoute.detail(workoutUi.id)) {
+                                WorkoutListRow(workoutUi: workoutUi)
+                                    .padding(.horizontal, 20)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                 }
@@ -54,22 +52,20 @@ struct WorkoutsScreen: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        isEditWorkoutPresented = true
+                        path.append(WorkoutsRoute.create)
                     }) {
                         Image(systemName: "plus")
                     }
                 }
             }
-            .navigationDestination(
-                isPresented: $isEditWorkoutPresented
-            ) {
-                EditWorkoutScreen(id: selectedWorkoutId)
-            }
-            .navigationDestination(
-                isPresented: $isActiveWorkoutPresented
-            ) {
-                if let id = selectedWorkoutId {
-                    ActiveWorkoutScreen(id: id)
+            .navigationDestination(for: WorkoutsRoute.self) { route in
+                switch route {
+                case .detail(let id):
+                    ActiveWorkoutScreen(path: $path, id: id)
+                case .edit(let id):
+                    EditWorkoutScreen(id: id)
+                case .create:
+                    EditWorkoutScreen(id: nil)
                 }
             }
             .background(Color(MR.colors().baseGray.getUIColor()))

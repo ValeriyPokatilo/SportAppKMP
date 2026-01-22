@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ActiveWorkoutScreen: View {
 
-    @State private var showExercises = false
     @StateObject var viewModel: ActiveWorkoutScreenViewModel
+    @Binding var path: NavigationPath
 
     private let id: String
 
@@ -23,8 +23,9 @@ struct ActiveWorkoutScreen: View {
         )
     }
 
-    init(id: String) {
+    init(path: Binding<NavigationPath>, id: String) {
         self.id = id
+        self._path = path
         _viewModel = StateObject(
             wrappedValue: ActiveWorkoutScreenViewModel(
                 workoutId: id,
@@ -34,12 +35,12 @@ struct ActiveWorkoutScreen: View {
     }
 
     var body: some View {
-        NavigationStack {
+        ScrollView {
             VStack {
                 switch screenState {
                 case is ActiveWorkoutStateInitial:
                     Loader()
-
+                    
                 case let state as ActiveWorkoutStateReady:
                     LazyVStack(alignment: .leading, spacing: 0) {
                         ForEach(state.exercises, id: \.id) { exercise in
@@ -55,7 +56,7 @@ struct ActiveWorkoutScreen: View {
                         }
                     }
                     Spacer()
-
+                    
                 default:
                     EmptyView()
                 }
@@ -66,14 +67,11 @@ struct ActiveWorkoutScreen: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    showExercises = true
+                    path.append(WorkoutsRoute.edit(id))
                 }) {
                     Image(systemName: "pencil.circle")
                 }
             }
-        }
-        .navigationDestination(isPresented: $showExercises) {
-            EditWorkoutScreen(id: id)
         }
     }
 }
