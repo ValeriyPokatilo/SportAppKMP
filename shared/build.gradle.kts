@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     id("dev.icerock.mobile.multiplatform-resources")
     alias(libs.plugins.kotlin.serialization)
+    id("app.cash.sqldelight") version "2.2.1"
 }
 
 kotlin {
@@ -44,16 +45,23 @@ kotlin {
 
             api(libs.multiplatform.settings)
             implementation(libs.multiplatform.settings.no.arg)
+
+            implementation(libs.sqldelight.runtime)
+            implementation(libs.sqldelight.coroutines.extensions)
         }
         androidMain.dependencies {
             api(libs.mokoMvvm.core)
             api(libs.mokoMvvm.flow)
             api(libs.mokoMvvm.flow.compose)
+
+            implementation(libs.sqldelight.android.driver)
         }
         iosMain.dependencies {
             api(libs.mokoMvvm.core)
             api(libs.mokoMvvm.flow)
             api(libs.mokoMvvm.flow.swiftui)
+
+            implementation(libs.sqldelight.native.driver)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -75,4 +83,12 @@ android {
 
 multiplatformResources {
     resourcesPackage.set("app.xl.sportappkmp")
+}
+
+sqldelight {
+    databases {
+        create("AppDatabase") {
+            packageName.set("app.xl")
+        }
+    }
 }
