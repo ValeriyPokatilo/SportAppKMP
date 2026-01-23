@@ -50,8 +50,10 @@ struct ExerciseListRow: View {
                         .font(.system(size: 12))
                 }
             }
+            Spacer()
+                .frame(height: 4)
+            Divider()
         }
-        .padding(.vertical, 8)
-        .background(Color(MR.colors().baseGray.getUIColor()))
+        .padding(.vertical, 4)
     }
 }

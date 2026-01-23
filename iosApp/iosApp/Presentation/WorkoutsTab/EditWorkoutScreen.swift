@@ -10,8 +10,8 @@ import SwiftUI
 
 struct EditWorkoutScreen: View {
 
+    @StateObject private var viewModel: EditWorkoutScreenViewModel
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel: EditWorkoutScreenViewModel
 
     private var screenState: WorkoutInfoState {
         viewModel.state(
@@ -40,60 +40,42 @@ struct EditWorkoutScreen: View {
     }
 
     var body: some View {
-        ScrollView {
-            ZStack {
-                AddButton(onTap: {})
-                VStack(alignment: .leading) {
-                    Text(localizer.get(id: MR.strings().workoutNameStr))
-                        .font(.system(size: 12))
-                    
-                    TextField("", text: titleBinding)
-                        .textFieldStyle(.roundedBorder)
-                        .background(.white)
-                    
+        ZStack {
+            AddButton(onTap: {
+                // TODO: - show exercises list for add exercise
+            })
+            VStack(alignment: .leading) {
+                Text(localizer.get(id: MR.strings().workoutNameStr))
+                    .font(.system(size: 12))
+
+                TextField("", text: titleBinding)
+                    .textFieldStyle(.roundedBorder)
+                    .background(.white)
+
+                ScrollView {
                     LazyVStack(alignment: .leading, spacing: 0) {
                         ForEach(screenState.exercises, id: \.id) { exercise in
-                            ZStack {
-                                ExerciseListRow(exercise: exercise)
-                                    .padding(.vertical, 4)
-                                    .cornerRadius(8)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .contentShape(Rectangle())
-                                
-                                HStack {
-                                    Spacer()
-                                    Button {
-                                        viewModel.onDeleteExercise(
-                                            exerciseId: exercise.id
-                                        )
-                                    } label: {
-                                        Image(systemName: "trash")
-                                            .font(.system(size: 18, weight: .bold))
-                                            .foregroundStyle(.white)
-                                            .frame(width: 36, height: 36)
-                                            .background(Color.red)
-                                            .clipShape(Circle())
-                                    }
-                                }
-                            }
-                            Divider()
+                            // TODO: - add swipe to delete action
+                            ExerciseListRow(exercise: exercise)
                         }
                     }
-                    Spacer()
                 }
+
+                Spacer()
             }
-            .padding(.horizontal, 20)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        viewModel.onSaveClicked()
-                        dismiss()
-                    } label: {
-                        Text("💾")
-                    }
+        }
+        .navigationTitle(titleBinding)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.onSaveClicked()
+                    dismiss()
+                } label: {
+                    Text("💾")
                 }
             }
         }
+        .padding(.horizontal, 20)
         .background(Color(MR.colors().baseGray.getUIColor()))
     }
 }

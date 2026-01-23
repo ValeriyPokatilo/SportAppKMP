@@ -9,11 +9,12 @@ import SwiftUI
 import Shared
 
 struct EnumPickerSheet<T: LocalizedEnum & Hashable>: View {
+
+    @State private var contentHeight: CGFloat = .leastNormalMagnitude
+    private let localizer = Localizer()
+
     let items: [T]
     let onSelect: (T) -> Void
-    private let localizer = Localizer()
-    
-    @State private var contentHeight: CGFloat = .leastNormalMagnitude
 
     var body: some View {
         VStack(spacing: 0) {

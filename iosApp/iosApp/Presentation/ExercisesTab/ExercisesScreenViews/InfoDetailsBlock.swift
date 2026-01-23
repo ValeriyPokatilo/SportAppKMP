@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct InfoDetailsBlock: View {
-    
+
     let title: String
     let images: [Image]
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(title)

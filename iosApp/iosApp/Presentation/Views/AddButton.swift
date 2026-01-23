@@ -9,9 +9,9 @@ import SwiftUI
 import Shared
 
 struct AddButton: View {
-    
+
     let onTap: () -> ()
-    
+
     var body: some View {
         VStack {
             Spacer()
@@ -27,7 +27,7 @@ struct AddButton: View {
                         .background(Color(MR.colors().baseGreen.getUIColor()))
                         .clipShape(Circle())
                 }
-                .padding(.trailing, 32)
+                .padding(.trailing, 8)
                 .padding(.bottom, 32)
             }
         }

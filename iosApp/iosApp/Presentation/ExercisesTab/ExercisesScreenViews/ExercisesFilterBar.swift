@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExercisesFilterBar: View {
-    
+
     let equipmentTitle: String
     let muscleGroupTitle: String
     let unitTypeTitle: String
@@ -17,21 +17,21 @@ struct ExercisesFilterBar: View {
     let onMuscleGroupTap: () -> ()
     let onUnitTypeTap: () -> ()
     let onResetButtonTap: () -> ()
-    
+
     var body: some View {
         HStack(spacing: 8) {
             ExercisesFilterBarButton(title: equipmentTitle) {
                 onEquipmentTap()
             }
-            
+
             ExercisesFilterBarButton(title: muscleGroupTitle) {
                 onMuscleGroupTap()
             }
-            
+
             ExercisesFilterBarButton(title: unitTypeTitle) {
                 onUnitTypeTap()
             }
-            
+
             if showResetButton {
                 Button {
                     onResetButtonTap()

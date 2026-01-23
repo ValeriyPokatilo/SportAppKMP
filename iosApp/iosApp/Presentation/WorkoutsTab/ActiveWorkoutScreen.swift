@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ActiveWorkoutScreen: View {
 
-    @StateObject var viewModel: ActiveWorkoutScreenViewModel
+    @StateObject private var viewModel: ActiveWorkoutScreenViewModel
     @Binding var path: NavigationPath
 
     private let id: String
@@ -40,30 +40,21 @@ struct ActiveWorkoutScreen: View {
                 switch screenState {
                 case is ActiveWorkoutStateInitial:
                     Loader()
-                    
+
                 case let state as ActiveWorkoutStateReady:
                     LazyVStack(alignment: .leading, spacing: 0) {
                         ForEach(state.exercises, id: \.id) { exercise in
+                            // TODO: - make original cell
                             ExerciseListRow(exercise: exercise)
-                                .padding(.vertical, 4)
-                                .cornerRadius(8)
-                                .frame(
-                                    maxWidth: .infinity,
-                                    alignment: .leading
-                                )
-                                .contentShape(Rectangle())
-                            Divider()
                         }
                     }
                     Spacer()
-                    
+
                 default:
                     EmptyView()
                 }
             }
         }
-        .padding(.horizontal, 20)
-        .background(Color(MR.colors().baseGray.getUIColor()))
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
@@ -73,5 +64,7 @@ struct ActiveWorkoutScreen: View {
                 }
             }
         }
+        .padding(.horizontal, 20)
+        .background(Color(MR.colors().baseGray.getUIColor()))
     }
 }

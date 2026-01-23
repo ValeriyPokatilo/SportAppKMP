@@ -13,7 +13,7 @@ struct WorkoutsScreen: View {
     @StateObject private var viewModel = WorkoutsScreenViewModel(
         fileManager: Shared.FileManager()
     )
-    
+
     @State private var path = NavigationPath()
 
     private var workouts: [WorkoutUI] {
@@ -34,21 +34,24 @@ struct WorkoutsScreen: View {
     var body: some View {
         NavigationStack(path: $path) {
             ScrollView {
-                LazyVStack(spacing: 0) {
-                    VStack(spacing: 16) {
-                        ForEach(workouts, id: \.id) { workoutUi in
-                            NavigationLink(value: WorkoutsRoute.detail(workoutUi.id)) {
-                                WorkoutListRow(workoutUi: workoutUi)
-                                    .padding(.horizontal, 20)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                            .buttonStyle(.plain)
+                LazyVStack(spacing: 16) {
+                    ForEach(workouts, id: \.id) { workoutUi in
+                        NavigationLink(
+                            value: WorkoutsRoute.detail(workoutUi.id)
+                        ) {
+                            WorkoutListRow(workoutUi: workoutUi)
+                                .padding(.horizontal, 20)
+                                .frame(
+                                    maxWidth: .infinity,
+                                    alignment: .leading
+                                )
                         }
+                        .buttonStyle(.plain)
                     }
                 }
             }
             .navigationTitle(Localizer().get(id: MR.strings().workoutsTabTitle))
-            .navigationBarTitleDisplayMode(.inline)
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -59,16 +62,21 @@ struct WorkoutsScreen: View {
                 }
             }
             .navigationDestination(for: WorkoutsRoute.self) { route in
-                switch route {
-                case .detail(let id):
-                    ActiveWorkoutScreen(path: $path, id: id)
-                case .edit(let id):
-                    EditWorkoutScreen(id: id)
-                case .create:
-                    EditWorkoutScreen(id: nil)
-                }
+                destination(for: route)
             }
             .background(Color(MR.colors().baseGray.getUIColor()))
+        }
+    }
+    
+    @ViewBuilder
+    private func destination(for route: WorkoutsRoute) -> some View {
+        switch route {
+        case .detail(let id):
+            ActiveWorkoutScreen(path: $path, id: id)
+        case .edit(let id):
+            EditWorkoutScreen(id: id)
+        case .create:
+            EditWorkoutScreen(id: nil)
         }
     }
 }

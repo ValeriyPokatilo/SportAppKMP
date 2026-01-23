@@ -5,13 +5,13 @@
 //  Created by Valeriy P on 07.01.2026.
 //
 
-import SwiftUI
 import Shared
+import SwiftUI
 
 struct WorkoutListRow: View {
-    
+
     let workoutUi: WorkoutUI
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(workoutUi.title)
@@ -22,8 +22,4 @@ struct WorkoutListRow: View {
                 .foregroundStyle(.gray)
         }
     }
-}
-
-#Preview {
-    WorkoutListRow(workoutUi: WorkoutUI(id: "id", title: "title", exercises: []))
 }
