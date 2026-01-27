@@ -51,7 +51,7 @@ struct WorkoutsScreen: View {
                 }
             }
             .navigationTitle(Localizer().get(id: MR.strings().workoutsTabTitle))
-            
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {

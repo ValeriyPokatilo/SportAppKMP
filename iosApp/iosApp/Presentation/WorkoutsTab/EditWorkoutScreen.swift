@@ -65,6 +65,7 @@ struct EditWorkoutScreen: View {
             }
         }
         .navigationTitle(titleBinding)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
