@@ -22,21 +22,26 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.xl.sportappkmp.MR
 import app.xl.sportappkmp.commonViews.Loader
 import app.xl.sportappkmp.data.FileManager
-import app.xl.sportappkmp.exercisesTab.views.ExerciseListRow
-import app.xl.sportappkmp.utils.Localizer
 import app.xl.sportappkmp.viewModels.workoutsTab.ActiveWorkoutScreenViewModel
 import app.xl.sportappkmp.viewModels.workoutsTab.ActiveWorkoutState
+import app.xl.sportappkmp.workoutsTab.views.ActiveWorkoutRow
+import app.xl.sportappkmp.workoutsTab.views.AddSetPicker
 
 @Composable
 fun ActiveWorkoutScreen(
@@ -51,7 +56,7 @@ fun ActiveWorkoutScreen(
 ) {
 
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val localizer = Localizer(context)
+    var selectedExerciseId by remember { mutableStateOf<String?>(null) }
 
     val title = when (val currentState = state) {
         is ActiveWorkoutState.Ready -> currentState.workout.title
@@ -113,22 +118,41 @@ fun ActiveWorkoutScreen(
                 ) {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(horizontal = 24.dp)
+                        contentPadding = PaddingValues(horizontal = 24.dp),
                     ) {
                         itemsIndexed(
                             items = exercises,
                             key = { _, exercise -> exercise.id }
-                        ) { index, exercise ->
-                            ExerciseListRow(
-                                localizer = localizer,
-                                exercise = exercise,
-                                onClick = {}
+                        ) { _, exercise ->
+                            ActiveWorkoutRow(
+                                exerciseTitle = exercise.localizedTitle,
+                                exerciseIconName = exercise.iconName,
+                                onAddSetClick = {
+                                    selectedExerciseId = exercise.localizedTitle // TODO: - Use id
+                                }
                             )
                         }
                     }
                 }
             }
             // TODO: - incorrect bottom padding
+        }
+
+        selectedExerciseId?.let { exerciseId ->
+            Dialog(
+                onDismissRequest = { selectedExerciseId = null },
+                properties = DialogProperties(
+                    usePlatformDefaultWidth = false
+                )
+            ) {
+                AddSetPicker(
+                    exerciseId = exerciseId,
+                    onCancelClick = {
+                        selectedExerciseId = null
+                    },
+                    onSaveClick = {}
+                )
+            }
         }
     }
 }
