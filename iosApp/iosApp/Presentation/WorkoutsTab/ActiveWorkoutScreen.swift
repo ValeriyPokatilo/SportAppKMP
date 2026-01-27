@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ActiveWorkoutScreen: View {
 
+    @State private var selectedExercise: Exercise? = nil
     @StateObject private var viewModel: ActiveWorkoutScreenViewModel
     @Binding var path: NavigationPath
 
@@ -21,6 +22,13 @@ struct ActiveWorkoutScreen: View {
             equals: { _, _ in false },
             mapper: { $0 }
         )
+    }
+
+    private var navigationTitle: String? {
+        guard let state = screenState as? ActiveWorkoutStateReady else {
+            return nil
+        }
+        return state.workout.title
     }
 
     init(path: Binding<NavigationPath>, id: String) {
@@ -44,8 +52,13 @@ struct ActiveWorkoutScreen: View {
                 case let state as ActiveWorkoutStateReady:
                     LazyVStack(alignment: .leading, spacing: 0) {
                         ForEach(state.exercises, id: \.id) { exercise in
-                            // TODO: - make original cell
-                            ExerciseListRow(exercise: exercise)
+                            ActiveWorkoutRow(
+                                exerciseTitle: exercise.localizedTitle,
+                                exerciseIconName: exercise.iconName,
+                                onAddSetTap: {
+                                    selectedExercise = exercise
+                                }
+                            )
                         }
                     }
                     Spacer()
@@ -55,6 +68,8 @@ struct ActiveWorkoutScreen: View {
                 }
             }
         }
+        .navigationTitle(navigationTitle ?? "")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
@@ -64,7 +79,15 @@ struct ActiveWorkoutScreen: View {
                 }
             }
         }
-        .padding(.horizontal, 20)
+        .fullScreenCover(item: $selectedExercise) { exercise in
+            AddSetPicker(
+                exerciseId: exercise.localizedTitle,
+                onSaveTap: {
+                    // TODO: -
+                }
+            )
+            .presentationBackground(.black.opacity(0.4))
+        }
         .background(Color(MR.colors().baseGray.getUIColor()))
     }
 }

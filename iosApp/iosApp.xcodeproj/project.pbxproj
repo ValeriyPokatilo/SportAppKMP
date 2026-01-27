@@ -14,6 +14,8 @@
 		7654E5652F01A004003E0465 /* WorkoutsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5642F01A004003E0465 /* WorkoutsScreen.swift */; };
 		7654E5672F01A022003E0465 /* ExercisesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5662F01A022003E0465 /* ExercisesScreen.swift */; };
 		7654E5692F01A02B003E0465 /* InfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654E5682F01A02B003E0465 /* InfoScreen.swift */; };
+		766558882F27828400EE2700 /* AddSetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766558872F27828400EE2700 /* AddSetPicker.swift */; };
+		7665588A2F278EE300EE2700 /* Ext+Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766558892F278EE300EE2700 /* Ext+Exercise.swift */; };
 		7670F3852F090A4E00C96A69 /* ExercisesFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3842F090A4E00C96A69 /* ExercisesFilterBar.swift */; };
 		7670F3872F090A6900C96A69 /* ExercisesFilterBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3862F090A6900C96A69 /* ExercisesFilterBarButton.swift */; };
 		7670F3892F0928AF00C96A69 /* EnumPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F3882F0928AF00C96A69 /* EnumPickerSheet.swift */; };
@@ -28,6 +30,7 @@
 		768386D02F22537900100F04 /* ExerciseCreateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768386CF2F22537900100F04 /* ExerciseCreateScreen.swift */; };
 		76951C8E2F07C140003311F2 /* ExerciseListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76951C8D2F07C140003311F2 /* ExerciseListRow.swift */; };
 		769B30062F20A7D200EED76A /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769B30052F20A7D200EED76A /* Loader.swift */; };
+		76B107D22F23EA2D00698F1A /* ActiveWorkoutRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B107D12F23EA2D00698F1A /* ActiveWorkoutRow.swift */; };
 		76CAF19E2F1821F40037809B /* EditWorkoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAF19D2F1821F40037809B /* EditWorkoutScreen.swift */; };
 		76CAF1A02F182F160037809B /* ActiveWorkoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAF19F2F182F160037809B /* ActiveWorkoutScreen.swift */; };
 		76CAF1A32F18A2F40037809B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAF1A22F18A2F40037809B /* AddButton.swift */; };
@@ -47,6 +50,8 @@
 		7654E5642F01A004003E0465 /* WorkoutsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsScreen.swift; sourceTree = "<group>"; };
 		7654E5662F01A022003E0465 /* ExercisesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesScreen.swift; sourceTree = "<group>"; };
 		7654E5682F01A02B003E0465 /* InfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreen.swift; sourceTree = "<group>"; };
+		766558872F27828400EE2700 /* AddSetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetPicker.swift; sourceTree = "<group>"; };
+		766558892F278EE300EE2700 /* Ext+Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Exercise.swift"; sourceTree = "<group>"; };
 		7670F3842F090A4E00C96A69 /* ExercisesFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesFilterBar.swift; sourceTree = "<group>"; };
 		7670F3862F090A6900C96A69 /* ExercisesFilterBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesFilterBarButton.swift; sourceTree = "<group>"; };
 		7670F3882F0928AF00C96A69 /* EnumPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPickerSheet.swift; sourceTree = "<group>"; };
@@ -62,6 +67,7 @@
 		768386CF2F22537900100F04 /* ExerciseCreateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCreateScreen.swift; sourceTree = "<group>"; };
 		76951C8D2F07C140003311F2 /* ExerciseListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListRow.swift; sourceTree = "<group>"; };
 		769B30052F20A7D200EED76A /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		76B107D12F23EA2D00698F1A /* ActiveWorkoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveWorkoutRow.swift; sourceTree = "<group>"; };
 		76CAF19D2F1821F40037809B /* EditWorkoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkoutScreen.swift; sourceTree = "<group>"; };
 		76CAF19F2F182F160037809B /* ActiveWorkoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveWorkoutScreen.swift; sourceTree = "<group>"; };
 		76CAF1A22F18A2F40037809B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				7670F3902F0969EC00C96A69 /* Ext+FilterSheetType.swift */,
+				766558892F278EE300EE2700 /* Ext+Exercise.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -224,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				76D29FE42F0E5AA800BFF395 /* WorkoutListRow.swift */,
+				766558872F27828400EE2700 /* AddSetPicker.swift */,
+				76B107D12F23EA2D00698F1A /* ActiveWorkoutRow.swift */,
 			);
 			path = WorkoutsScreenViews;
 			sourceTree = "<group>";
@@ -347,6 +356,7 @@
 				7654E5592F019E77003E0465 /* iOSApp.swift in Sources */,
 				7654E5652F01A004003E0465 /* WorkoutsScreen.swift in Sources */,
 				7654E55F2F019EC3003E0465 /* MainScreen.swift in Sources */,
+				7665588A2F278EE300EE2700 /* Ext+Exercise.swift in Sources */,
 				76951C8E2F07C140003311F2 /* ExerciseListRow.swift in Sources */,
 				7670F3852F090A4E00C96A69 /* ExercisesFilterBar.swift in Sources */,
 				7670F3892F0928AF00C96A69 /* EnumPickerSheet.swift in Sources */,
@@ -355,6 +365,7 @@
 				7670F3912F0969EC00C96A69 /* Ext+FilterSheetType.swift in Sources */,
 				7670F3A52F096EA300C96A69 /* ViewModelObservable.swift in Sources */,
 				7670F3A62F096EA300C96A69 /* ViewModelBinding.swift in Sources */,
+				766558882F27828400EE2700 /* AddSetPicker.swift in Sources */,
 				76CAF1A02F182F160037809B /* ActiveWorkoutScreen.swift in Sources */,
 				7670F3A72F096EA300C96A69 /* ViewModelState.swift in Sources */,
 				768386D02F22537900100F04 /* ExerciseCreateScreen.swift in Sources */,
@@ -366,6 +377,7 @@
 				7670F3A92F096EA300C96A69 /* CFlowExt.swift in Sources */,
 				7670F3872F090A6900C96A69 /* ExercisesFilterBarButton.swift in Sources */,
 				7654E5692F01A02B003E0465 /* InfoScreen.swift in Sources */,
+				76B107D22F23EA2D00698F1A /* ActiveWorkoutRow.swift in Sources */,
 				7654E5672F01A022003E0465 /* ExercisesScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
