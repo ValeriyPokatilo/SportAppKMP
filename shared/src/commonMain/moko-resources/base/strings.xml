@@ -4,6 +4,9 @@
     <string name="workoutsTabTitle">Workouts</string>
     <string name="exercisesTabTitle">Exercises</string>
     <string name="infoTabTitle">Info</string>
+    <!-- Common -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
     <!-- Search bar -->
     <string name="searchBarPlaceholder">Search ...</string>
     <!-- Muscle groups -->
@@ -45,8 +48,10 @@
     <string name="allMuscles">All muscles</string>
     <string name="allUnitTypes">All types</string>
     <!-- Workout details -->
-    <string name="workoutNameStr">Workout Title:</string> // Название тренировки:
-    <string name="newWorkoutStr">New Workout</string> // Новая тренировка
-    <string name="addExerciseStr">Add Exercise</string> // Добавить упражнение
-    <string name="emptyExercisesStr">Please add at least one exercise to save</string> // Добавьте хотя бы одно упражнение, чтобы сохранить
+    <string name="workoutNameStr">Workout Title:</string>
+    <string name="newWorkoutStr">New Workout</string>
+    <string name="addExerciseStr">Add Exercise</string>
+    <string name="emptyExercisesStr">Please add at least one exercise to save</string>
+    <string name="reps">Reps</string>
+    <string name="weight">Weight</string>
 </resources>

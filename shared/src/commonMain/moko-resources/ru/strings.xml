@@ -4,6 +4,9 @@
     <string name="workoutsTabTitle">Тренировки</string>
     <string name="exercisesTabTitle">Упражнения</string>
     <string name="infoTabTitle">Инфо</string>
+    <!-- Common -->
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
     <!-- Search bar -->
     <string name="searchBarPlaceholder">Поиск ...</string>
     <!-- Muscle groups -->
@@ -49,4 +52,6 @@
     <string name="newWorkoutStr">Новая тренировка</string>
     <string name="addExerciseStr">Добавить упражнение</string>
     <string name="emptyExercisesStr">Добавьте хотя бы одно упражнение, чтобы сохранить</string>
+    <string name="reps">Раз</string>
+    <string name="weight">Вес</string>
 </resources>
