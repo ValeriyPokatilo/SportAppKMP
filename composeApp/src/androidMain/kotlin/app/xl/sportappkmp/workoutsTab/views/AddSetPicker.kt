@@ -35,9 +35,9 @@ import app.xl.sportappkmp.utils.Localizer
 @Composable
 fun AddSetPicker(
     modifier: Modifier = Modifier,
-    exerciseId: String,
-    onCancelClick: () -> Unit,
-    onSaveClick: () -> Unit
+    title: String,
+    dismissBlock: () -> Unit,
+    onSaveClick: (reps: Long, weight: Double) -> Unit
 ) {
     val context = LocalContext.current
     val localizer = Localizer(context)
@@ -46,7 +46,7 @@ fun AddSetPicker(
     var weight by remember { mutableStateOf("") }
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 24.dp)
             .background(
                 color = Color.White,
@@ -63,7 +63,7 @@ fun AddSetPicker(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                text = exerciseId,
+                text = title,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
@@ -81,7 +81,7 @@ fun AddSetPicker(
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp),
                 label = { Text(
-                    text = localizer.get(MR.strings.reps)
+                    text = "${localizer.get(MR.strings.reps)} (required)"
                 )},
                 singleLine = true
             )
@@ -98,7 +98,7 @@ fun AddSetPicker(
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp),
                 label = { Text(
-                    text = localizer.get(MR.strings.weight)
+                    text = "${localizer.get(MR.strings.weight)} (optional)"
                 ) },
                 singleLine = true
             )
@@ -113,7 +113,7 @@ fun AddSetPicker(
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Button(
-                    onClick = onCancelClick,
+                    onClick = dismissBlock,
                     modifier = Modifier
                         .weight(1f)
                         .height(48.dp),
@@ -129,7 +129,16 @@ fun AddSetPicker(
                 }
 
                 Button(
-                    onClick = onSaveClick,
+                    onClick = {
+                        val repsValue = reps.toLongOrNull()
+                        val weightValue = weight.takeIf { it.isNotBlank() }?.toDoubleOrNull() ?: 0.0
+
+                        if (repsValue != null && repsValue > 0) {
+                            onSaveClick(repsValue, weightValue)
+                        }
+
+                        dismissBlock()
+                    },
                     modifier = Modifier
                         .weight(1f)
                         .height(48.dp),

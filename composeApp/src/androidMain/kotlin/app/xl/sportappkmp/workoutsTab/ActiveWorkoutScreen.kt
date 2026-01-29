@@ -8,12 +8,15 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.EditNote
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -37,11 +40,15 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.xl.sportappkmp.MR
 import app.xl.sportappkmp.commonViews.Loader
+import app.xl.sportappkmp.data.DatabaseDriverFactory
 import app.xl.sportappkmp.data.FileManager
+import app.xl.sportappkmp.models.Exercise
 import app.xl.sportappkmp.viewModels.workoutsTab.ActiveWorkoutScreenViewModel
 import app.xl.sportappkmp.viewModels.workoutsTab.ActiveWorkoutState
 import app.xl.sportappkmp.workoutsTab.views.ActiveWorkoutRow
 import app.xl.sportappkmp.workoutsTab.views.AddSetPicker
+import com.russhwolf.settings.BuildConfig
+import kotlin.time.Clock
 
 @Composable
 fun ActiveWorkoutScreen(
@@ -49,14 +56,20 @@ fun ActiveWorkoutScreen(
     workoutId: String,
     context: Context = LocalContext.current.applicationContext,
     viewModel: ActiveWorkoutScreenViewModel = viewModel {
-        ActiveWorkoutScreenViewModel(workoutId, FileManager(context))
+        ActiveWorkoutScreenViewModel(
+            workoutId,
+            FileManager(context),
+            DatabaseDriverFactory(context)
+        )
     },
     onEdit: () -> Unit,
     onFinished: () -> Unit
 ) {
 
     val state by viewModel.state.collectAsStateWithLifecycle()
-    var selectedExerciseId by remember { mutableStateOf<String?>(null) }
+    val sets by viewModel.sets.collectAsStateWithLifecycle()
+    val history by viewModel.history.collectAsStateWithLifecycle()
+    var selectedExercise by remember { mutableStateOf<Exercise?>(null) }
 
     val title = when (val currentState = state) {
         is ActiveWorkoutState.Ready -> currentState.workout.title
@@ -116,6 +129,23 @@ fun ActiveWorkoutScreen(
                         .padding(top = innerPadding.calculateTopPadding())
                         .background(Color(MR.colors.baseGray.getColor(context)))
                 ) {
+                    if (BuildConfig.DEBUG) {
+                        Button(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 24.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.Red,
+                                contentColor = Color.White
+                            ),
+                            onClick = {
+                                viewModel.shiftAllSetsOneDayBack()
+                            }
+                        ) {
+                            Text(text = "DEBUG: shift all sets one day back")
+                        }
+                    }
+
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),
                         contentPadding = PaddingValues(horizontal = 24.dp),
@@ -127,8 +157,10 @@ fun ActiveWorkoutScreen(
                             ActiveWorkoutRow(
                                 exerciseTitle = exercise.localizedTitle,
                                 exerciseIconName = exercise.iconName,
+                                sets = sets.filter { it.exerciseId == exercise.id },
+                                history = history[exercise.id].orEmpty(),
                                 onAddSetClick = {
-                                    selectedExerciseId = exercise.localizedTitle // TODO: - Use id
+                                    selectedExercise = exercise
                                 }
                             )
                         }
@@ -138,19 +170,28 @@ fun ActiveWorkoutScreen(
             // TODO: - incorrect bottom padding
         }
 
-        selectedExerciseId?.let { exerciseId ->
+        selectedExercise?.let { exercise ->
             Dialog(
-                onDismissRequest = { selectedExerciseId = null },
+                onDismissRequest = { selectedExercise = null },
                 properties = DialogProperties(
                     usePlatformDefaultWidth = false
                 )
             ) {
                 AddSetPicker(
-                    exerciseId = exerciseId,
-                    onCancelClick = {
-                        selectedExerciseId = null
+                    title = exercise.localizedTitle,
+                    dismissBlock = {
+                        selectedExercise = null
                     },
-                    onSaveClick = {}
+                    onSaveClick = { reps, weight ->
+                        selectedExercise?.let {
+                            viewModel.onAddSetClick(
+                                exerciseId = it.id,
+                                reps = reps,
+                                weight = weight,
+                                timeStamp = Clock.System.now().toString()
+                            )
+                        }
+                    }
                 )
             }
         }
