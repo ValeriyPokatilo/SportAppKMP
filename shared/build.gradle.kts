@@ -48,6 +48,8 @@ kotlin {
 
             implementation(libs.sqldelight.runtime)
             implementation(libs.sqldelight.coroutines.extensions)
+
+            implementation(libs.kotlinx.datetime)
         }
         androidMain.dependencies {
             api(libs.mokoMvvm.core)
