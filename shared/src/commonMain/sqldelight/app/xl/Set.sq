@@ -1,9 +1,0 @@
-import kotlin.Int;
-
-CREATE TABLE "Set" (
-    id TEXT NOT NULL PRIMARY KEY,
-    exerciseId TEXT NOT NULL,
-    reps INTEGER AS Int NOT NULL DEFAULT 0,
-    weight REAL NOT NULL DEFAULT 0.0,
-    timeStamp INTEGER NOT NULL
-);

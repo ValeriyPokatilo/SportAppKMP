@@ -1,0 +1,31 @@
+import kotlin.Int;
+
+CREATE TABLE "ExerciseSet" (
+    id TEXT NOT NULL PRIMARY KEY,
+    exerciseId TEXT NOT NULL,
+    reps INTEGER NOT NULL DEFAULT 0,
+    weight REAL NOT NULL DEFAULT 0.0,
+    timeStamp TEXT NOT NULL
+);
+
+addSet:
+INSERT INTO "ExerciseSet" (id, exerciseId, reps, weight, timeStamp)
+VALUES (?, ?, ?, ?, ?);
+
+fetchCurrentSets:
+SELECT * FROM "ExerciseSet"
+WHERE date(timeStamp) = date('now');
+
+fetchPreviousSets:
+SELECT *
+FROM ExerciseSet
+WHERE exerciseId = :exerciseId
+  AND date(timeStamp) = (
+      SELECT MAX(date(timeStamp))
+      FROM ExerciseSet
+      WHERE date(timeStamp) < date('now')
+  );
+
+shiftAllSetsOneDayBack:
+UPDATE ExerciseSet
+SET timeStamp = strftime('%Y-%m-%dT%H:%M:%SZ', timeStamp, '-1 day');
