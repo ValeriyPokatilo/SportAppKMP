@@ -64,8 +64,8 @@ class ActiveWorkoutScreenViewModel(
     private val _sets = MutableStateFlow<List<ExerciseSet>>(listOf())
     val sets: CStateFlow<List<ExerciseSet>> = _sets.asStateFlow().cStateFlow()
 
-    private val _history = MutableStateFlow<Map<String, List<ExerciseSet>>>(emptyMap())
-    val history: CStateFlow<Map<String, List<ExerciseSet>>> = _history.asStateFlow().cStateFlow()
+    private val _history = MutableStateFlow<List<ExerciseSet>>(emptyList())
+    val history: CStateFlow<List<ExerciseSet>> = _history.asStateFlow().cStateFlow()
 
     private var currentExercises: List<Exercise> = emptyList()
 
@@ -120,16 +120,14 @@ class ActiveWorkoutScreenViewModel(
 
     private fun loadHistory(exercises: List<Exercise>) {
         viewModelScope.launch {
-            val historyMap = mutableMapOf<String, List<ExerciseSet>>()
+            val allHistorySets = mutableListOf<ExerciseSet>()
 
             for (exercise in exercises) {
-                val previousSets =
-                    setsRepository.fetchPreviousSets(exercise.id)
-
-                historyMap[exercise.id] = previousSets
+                val previousSets = setsRepository.fetchPreviousSets(exercise.id)
+                allHistorySets += previousSets
             }
 
-            _history.value = historyMap
+            _history.value = allHistorySets
         }
     }
 
