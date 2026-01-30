@@ -18,7 +18,7 @@ struct AddSetPicker: View {
     private let localizer = Localizer()
     
     let exerciseId: String
-    let onSaveTap: () -> ()
+    let onSaveTap: (Int, Double) -> ()
     
     var body: some View {
         VStack{
@@ -28,11 +28,11 @@ struct AddSetPicker: View {
                 Text(exerciseId)
                     .font(.system(size: 24, weight: .bold))
                 
-                TextField(localizer.get(id: MR.strings().reps), text: $reps)
+                TextField("\(localizer.get(id: MR.strings().reps)) (required)", text: $reps)
                     .textFieldStyle(.roundedBorder)
                     .keyboardType(.numberPad)
                 
-                TextField(localizer.get(id: MR.strings().weight), text: $weight)
+                TextField("\(localizer.get(id: MR.strings().weight)) (optional)", text: $weight)
                     .textFieldStyle(.roundedBorder)
                     .keyboardType(.decimalPad)
                 
@@ -50,7 +50,14 @@ struct AddSetPicker: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
 
                     Button {
-                        // TODO: -
+                        let repsValue = Int(reps)
+                        let weightValue = Double(weight) ?? 0.0
+                        
+                        if let repsValue {
+                            onSaveTap(repsValue, weightValue)
+                        }
+                        
+                        dismiss()
                     } label: {
                         Text(localizer.get(id: MR.strings().save))
                     }

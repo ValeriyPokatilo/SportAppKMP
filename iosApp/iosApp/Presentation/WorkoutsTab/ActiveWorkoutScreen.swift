@@ -24,6 +24,36 @@ struct ActiveWorkoutScreen: View {
         )
     }
 
+    private var sets: [ExerciseSet] {
+        viewModel.state(
+            \.sets,
+            equals: { oldValue, newValue in
+                guard let oldArr = oldValue as? [ExerciseSet],
+                    let newArr = newValue as? [ExerciseSet]
+                else { return false }
+                return oldArr == newArr
+            },
+            mapper: { value in
+                value as? [ExerciseSet] ?? []
+            }
+        )
+    }
+
+    private var history: [ExerciseSet] {
+        viewModel.state(
+            \.history,
+            equals: { oldValue, newValue in
+                guard let oldArr = oldValue as? [ExerciseSet],
+                    let newArr = newValue as? [ExerciseSet]
+                else { return false }
+                return oldArr == newArr
+            },
+            mapper: { value in
+                value as? [ExerciseSet] ?? []
+            }
+        )
+    }
+
     private var navigationTitle: String? {
         guard let state = screenState as? ActiveWorkoutStateReady else {
             return nil
@@ -37,7 +67,8 @@ struct ActiveWorkoutScreen: View {
         _viewModel = StateObject(
             wrappedValue: ActiveWorkoutScreenViewModel(
                 workoutId: id,
-                fileManager: Shared.FileManager()
+                fileManager: Shared.FileManager(),
+                databaseDriverFactory: DatabaseDriverFactory()
             )
         )
     }
@@ -51,10 +82,27 @@ struct ActiveWorkoutScreen: View {
 
                 case let state as ActiveWorkoutStateReady:
                     LazyVStack(alignment: .leading, spacing: 0) {
+                        #if DEBUG
+                        Button {
+                            viewModel.shiftAllSetsOneDayBack()
+                        } label: {
+                            Text("DEBUG: shift all sets one day back")
+                        }
+                        .buttonStyle(.plain)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 32)
+                        .background(.red)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(.horizontal, 20)
+                        #endif
+                        
                         ForEach(state.exercises, id: \.id) { exercise in
                             ActiveWorkoutRow(
                                 exerciseTitle: exercise.localizedTitle,
                                 exerciseIconName: exercise.iconName,
+                                sets: sets.filter({ $0.exerciseId == exercise.id }),
+                                history: history.filter({ $0.exerciseId == exercise.id }),
                                 onAddSetTap: {
                                     selectedExercise = exercise
                                 }
@@ -82,8 +130,20 @@ struct ActiveWorkoutScreen: View {
         .fullScreenCover(item: $selectedExercise) { exercise in
             AddSetPicker(
                 exerciseId: exercise.localizedTitle,
-                onSaveTap: {
-                    // TODO: -
+                onSaveTap: { reps, weight in
+                    let isoFormatter = ISO8601DateFormatter()
+                    isoFormatter.formatOptions = [
+                        .withInternetDateTime,
+                        .withFractionalSeconds,
+                    ]
+                    let isoDate = isoFormatter.string(from: Date())
+
+                    viewModel.onAddSetClick(
+                        exerciseId: exercise.id,
+                        reps: Int64(reps),
+                        weight: weight,
+                        timeStamp: isoDate
+                    )
                 }
             )
             .presentationBackground(.black.opacity(0.4))
