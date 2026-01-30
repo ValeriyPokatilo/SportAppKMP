@@ -10,6 +10,7 @@
 - **moko-resources**
 - **kotlinx.serialization**
 - **multiplatform.settings**
+- **SQLDelight**
 
 ## Сборка проекта
 
