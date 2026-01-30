@@ -158,7 +158,7 @@ fun ActiveWorkoutScreen(
                                 exerciseTitle = exercise.localizedTitle,
                                 exerciseIconName = exercise.iconName,
                                 sets = sets.filter { it.exerciseId == exercise.id },
-                                history = history[exercise.id].orEmpty(),
+                                history = history.filter { it.exerciseId == exercise.id },
                                 onAddSetClick = {
                                     selectedExercise = exercise
                                 }
