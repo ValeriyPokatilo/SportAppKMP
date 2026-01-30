@@ -4,6 +4,7 @@ import app.xl.sportappkmp.models.Workout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
@@ -39,7 +40,7 @@ object DemoWorkouts {
                 )
             )
         ).forEach {
-            CoroutineScope(Dispatchers.Default).launch {
+            runBlocking {
                 workoutsRepository.saveWorkout(it)
             }
         }
