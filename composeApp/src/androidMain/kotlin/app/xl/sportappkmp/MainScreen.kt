@@ -73,6 +73,8 @@ fun MainScreen() {
     Scaffold(
         contentWindowInsets = WindowInsets.systemBars,
         containerColor = Color(MR.colors.baseGray.getColor(context)),
+        // TODO: - implement FAB
+        /*
         floatingActionButton = {
             when (selectedDestination) {
                 BottomBarDestination.WORKOUTS -> {
@@ -88,6 +90,7 @@ fun MainScreen() {
                 BottomBarDestination.INFO -> {}
             }
         },
+        */
         bottomBar = {
             NavigationBar {
                 items.forEach { item ->
